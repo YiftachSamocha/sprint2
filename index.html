@@ -13,9 +13,10 @@
 <body onload="onInit()">
     <header>
         <div>Logo</div>
-        <a href="">Memes</a>
-        <a href="">Gallery</a>
-        <a href="">About</a>
+        <a onclick="showSection('saved-memes')">Memes</a>
+        <a onclick="showSection('gallery')">Gallery</a>
+        <a onclick="showSection('editor')">editor</a>
+        <a onclick="">About</a>
     </header>
 
     <main>
@@ -23,6 +24,10 @@
 
         <section class="editor">
             <canvas></canvas>
+        </section>
+
+        <section class="saved-memes">
+            <div>Example</div>
         </section>
     </main>
     <script src="js/util/util.js"></script>
