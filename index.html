@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="css/main.css">
 </head>
 
-<body>
+<body onload="onInit()">
     <header>
         <div>Logo</div>
         <a href="">Memes</a>
@@ -19,26 +19,18 @@
     </header>
 
     <main>
-        <section class="gallery">
-            <div class="image"> <img src="img/asi.jpg" onclick="renderMeme(this)"></div>
-            <div class="image"> <img src="img/boy.jpg" onclick="renderMeme(this)"></div>
-            <div class="image"> <img src="img/cat.jpg" onclick="renderMeme(this)"></div>
-            <div class="image"> <img src="img/dance.jpg" onclick="renderMeme(this)"></div>
-            <div class="image"> <img src="img/danit.jpg" onclick="renderMeme(this)"></div>
-            <div class="image"> <img src="img/morpheus.jpg" onclick="renderMeme(this)"></div>
-            <div class="image"> <img src="img/opera.jpg" onclick="renderMeme(this)"></div>
-            <div class="image"> <img src="img/philosoraptor.jpg" onclick="renderMeme(this)"></div>
-        </section>
+        <section class="gallery"></section>
 
         <section class="editor">
             <canvas></canvas>
         </section>
     </main>
-
-    <script src="js/memeController.js"></script>
-    <script src="js/memeService.js"></script>
-    <script src="js/galleryController.js"></script>
-    <script src="js/galleryService.js"></script>
+    <script src="js/util/util.js"></script>
+    <script src="js/gallery/galleryController.js"></script>
+    <script src="js/gallery/galleryService.js"></script>
+    <script src="js/meme/memeController.js"></script>
+    <script src="js/meme/memeService.js"></script>
+   
 </body>
 
 </html>
