@@ -7,28 +7,38 @@
     <title>Create a Meme</title>
     <link rel="stylesheet" href="css/editor.css">
     <link rel="stylesheet" href="css/gallery.css">
+    <link rel="stylesheet" href="css/main.css">
 </head>
 
 <body>
-    <header> </header>
+    <header>
+        <div>Logo</div>
+        <a href="">Memes</a>
+        <a href="">Gallery</a>
+        <a href="">About</a>
+    </header>
 
     <main>
         <section class="gallery">
-            <div class="image"> <img src="img/asi.jpg"></div>
-            <div class="image"> <img src="img/boy.jpg"></div>
-            <div class="image"> <img src="img/cat.jpg"></div>
-            <div class="image"> <img src="img/dance.jpg"></div>
-            <div class="image"> <img src="img/danit.jpg"></div>
-            <div class="image"> <img src="img/morpheus.jpg"></div>
-            <div class="image"> <img src="img/opera.jpg"></div>
-            <div class="image"> <img src="img/philosoraptor.jpg"></div>
+            <div class="image"> <img src="img/asi.jpg" onclick="renderMeme(this)"></div>
+            <div class="image"> <img src="img/boy.jpg" onclick="renderMeme(this)"></div>
+            <div class="image"> <img src="img/cat.jpg" onclick="renderMeme(this)"></div>
+            <div class="image"> <img src="img/dance.jpg" onclick="renderMeme(this)"></div>
+            <div class="image"> <img src="img/danit.jpg" onclick="renderMeme(this)"></div>
+            <div class="image"> <img src="img/morpheus.jpg" onclick="renderMeme(this)"></div>
+            <div class="image"> <img src="img/opera.jpg" onclick="renderMeme(this)"></div>
+            <div class="image"> <img src="img/philosoraptor.jpg" onclick="renderMeme(this)"></div>
         </section>
-        
-        <section class="editor"></section>
+
+        <section class="editor">
+            <canvas></canvas>
+        </section>
     </main>
 
     <script src="js/memeController.js"></script>
     <script src="js/memeService.js"></script>
+    <script src="js/galleryController.js"></script>
+    <script src="js/galleryService.js"></script>
 </body>
 
 </html>
