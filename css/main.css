@@ -5,10 +5,21 @@
 header{
     display: flex;
     justify-content: space-around;
+    align-items: center;
+    height: 20vh;
+    background-color: var(--main-color);
+    
 }
 .logo{
     justify-self: start;
 }
+
+a{
+    font-size: 2em;
+    
+}
+
+
 
 .hide{
     display: none;
