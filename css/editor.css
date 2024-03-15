@@ -1,3 +1,8 @@
+.editor{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
 canvas{
     border: 2px solid black;
 }

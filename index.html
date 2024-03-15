@@ -25,6 +25,13 @@
 
         <section class="editor">
             <canvas></canvas>
+            <div class="tools">
+                <label for="line">Line:</label>
+                <input type="text" name="line" oninput="onSetText(this.value)">
+
+                <label for="color">Color:</label>
+                <input type="color" name="color" oninput="onSetColor(this.value)">
+            </div>
         </section>
 
         <section class="saved-memes">
@@ -36,7 +43,7 @@
     <script src="js/gallery/galleryService.js"></script>
     <script src="js/meme/memeController.js"></script>
     <script src="js/meme/memeService.js"></script>
-   
+
 </body>
 
 </html>
