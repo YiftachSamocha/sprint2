@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/gallery.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/fonts.css">
 </head>
 
 <body onload="onInit()">
@@ -35,21 +36,25 @@
                 <div class="design">
                     <button onclick="onChangeSize('bigger')">A+</button>
                     <button onclick="onChangeSize('smaller')">A-</button>
-                    <button><i class="fa-solid fa-align-left"></i></button>
-                    <button><i class="fa-solid fa-align-center"></i></button>
-                    <button><i class="fa-solid fa-align-right"></i></button>
-                    <select name="" id="">
-                        <option value="impact">Impact</option>
+                    <button onclick="onSetAlign('left')"><i class="fa-solid fa-align-left"></i></button>
+                    <button onclick="onSetAlign('center')"><i class="fa-solid fa-align-center"></i></button>
+                    <button onclick="onSetAlign('right')"><i class="fa-solid fa-align-right"></i></button>
+                    <select onchange="onSetFont(this.value)">
+                        <option value="Averia">Averia</option>
+                        <option value="Livvic">Livvic</option>
+                        <option value="Lobster">Lobster</option>
+                        <option value="Passion">Passion</option>
+                        <option value="Timmana">Timmana</option>
                     </select>
                     <label for="strokeColor"> <i class="fa-solid fa-font"></i></label>
                     <input type="color" name="color" id="strokeColor" oninput="onSetStrokeColor(this.value)"
                         class="hide"> </input>
-                        
+
                     <label for="fillColor"><i class="fa-solid fa-palette"></i></label>
                     <input type="color" name="fillColor" id="fillColor" oninput="onSetFillColor(this.value)"
                         class="hide"> </input>
 
-                    
+
 
 
                 </div>

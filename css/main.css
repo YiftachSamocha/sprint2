@@ -13,6 +13,9 @@ header {
 
 }
 
+header div{
+    font-family: 'Timmana';
+}
 .logo {
     justify-self: start;
 }

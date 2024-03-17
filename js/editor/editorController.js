@@ -32,11 +32,24 @@ function renderMeme() {
     //text
     const text = meme.line.txt
     const size = meme.line.size
-    gCtx.font = size + 'px David'
-    gCtx.textAlign = 'center'
-    gCtx.textBaseline = 'middle'
-    gCtx.fillText(text, 12, 70)
-    gCtx.strokeText(text, 12, 70)
+    const font = meme.line.font
+    const align = meme.line.align
+    let x = 0
+    let y = gElCanvas.height/2
+    gCtx.font = size + 'px ' + font
+    gCtx.textAlign = align
+    switch (align) {
+        case 'left':
+            x = 0
+            break
+        case 'center':
+            x = gElCanvas.width / 2
+            break
+        case 'right':
+            x = gElCanvas.width
+    }
+    gCtx.fillText(text, x, y)
+    gCtx.strokeText(text, x, y)
 }
 
 function onImgSelect(imageId) {
@@ -68,6 +81,16 @@ function onChangeSize(change) {
     renderMeme()
 }
 
+function onSetFont(font) {
+    setFont(font)
+    renderMeme()
+}
+
+function onSetAlign(align) {
+    setAlign(align)
+    renderMeme()
+}
+
 function onDownload(elLink) {
     setEditedMemeId(createId())
     const dataUrl = gElCanvas.toDataURL()
@@ -79,6 +102,4 @@ function onDownload(elLink) {
     renderSavedMemes()
 }
 
-function setCanvas(canvas) {
-    gElCanvas = canvas
-}
+

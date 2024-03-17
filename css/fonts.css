@@ -1,0 +1,24 @@
+@font-face {
+    font-family: 'Averia';
+    src: url('fonts/AveriaSerifLibre-LightItalic.ttf');
+}
+
+@font-face {
+    font-family: 'Livvic';
+    src: url('fonts/Livvic-Italic.ttf');
+}
+
+@font-face {
+    font-family: 'Lobster';
+    src: url('fonts/LobsterTwo-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Passion';
+    src: url('fonts/PassionOne-Bold.ttf');
+}
+
+@font-face {
+    font-family: 'Timmana';
+    src: url('fonts/Timmana-Regular.ttf');
+}

@@ -8,7 +8,9 @@ var gEditedMeme = {
         txt: '',
         size: SIZE * 4,
         fillColor: '',
-        strokeColor: ''
+        strokeColor: '',
+        font: '',
+        align: '',
     },
 
 
@@ -37,6 +39,14 @@ function setFillColor(color) {
 
 function setStrokeColor(color) {
     gEditedMeme.line.strokeColor = color
+}
+
+function setFont(font) {
+    gEditedMeme.line.font = font
+}
+
+function setAlign(align) {
+    gEditedMeme.line.align = align
 }
 
 function setEditedMemeId(id) {
