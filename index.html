@@ -33,16 +33,24 @@
                     <button><i class="fa-solid fa-trash"></i></button>
                 </div>
                 <div class="design">
-                    <button>A+</button>
-                    <button>A-</button>
+                    <button onclick="onChangeSize('bigger')">A+</button>
+                    <button onclick="onChangeSize('smaller')">A-</button>
                     <button><i class="fa-solid fa-align-left"></i></button>
                     <button><i class="fa-solid fa-align-center"></i></button>
                     <button><i class="fa-solid fa-align-right"></i></button>
                     <select name="" id="">
                         <option value="impact">Impact</option>
                     </select>
-                     <button>A</button>
-                    <input type="color" name="color" oninput="onSetColor(this.value)">
+                    <label for="strokeColor"> <i class="fa-solid fa-font"></i></label>
+                    <input type="color" name="color" id="strokeColor" oninput="onSetStrokeColor(this.value)"
+                        class="hide"> </input>
+                        
+                    <label for="fillColor"><i class="fa-solid fa-palette"></i></label>
+                    <input type="color" name="fillColor" id="fillColor" oninput="onSetFillColor(this.value)"
+                        class="hide"> </input>
+
+                    
+
 
                 </div>
                 <div class="emojis"></div>

@@ -18,21 +18,25 @@ function renderMeme() {
 
     gElCanvas.height = image.clientHeight
     gElCanvas.width = image.clientWidth
-    
+
     gallery.classList.add('hide')
     gCtx.drawImage(image, 0, 0, gElCanvas.width, gElCanvas.height)
 
 
     //color
-    const color = meme.line.color
-    gCtx.fillStyle = color
+    const fillColor = meme.line.fillColor
+    const strokeColor = meme.line.strokeColor
+    gCtx.fillStyle = fillColor
+    gCtx.strokeStyle = strokeColor
 
     //text
     const text = meme.line.txt
-    gCtx.font = '60px David'
+    const size = meme.line.size
+    gCtx.font = size + 'px David'
     gCtx.textAlign = 'center'
     gCtx.textBaseline = 'middle'
     gCtx.fillText(text, 12, 70)
+    gCtx.strokeText(text, 12, 70)
 }
 
 function onImgSelect(imageId) {
@@ -49,8 +53,18 @@ function onSetText(txt) {
 
 }
 
-function onSetColor(color) {
-    setColor(color)
+function onSetFillColor(color) {
+    setFillColor(color)
+    renderMeme()
+}
+
+function onSetStrokeColor(color) {
+    setStrokeColor(color)
+    renderMeme()
+}
+
+function onChangeSize(change) {
+    setSize(change)
     renderMeme()
 }
 
