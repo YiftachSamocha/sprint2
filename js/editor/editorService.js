@@ -16,7 +16,7 @@ function getEditedMeme() {
     return gEditedMeme
 }
 
-function setMeme(meme) {
+function setEditedMeme(meme) {
     gEditedMeme = meme
 }
 
@@ -33,6 +33,6 @@ function setColor(color) {
     gEditedMeme.line.color = color
 }
 
-function setMemeId(id) {
+function setEditedMemeId(id) {
     gEditedMeme.id = id
 }

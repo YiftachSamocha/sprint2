@@ -37,7 +37,7 @@ function renderMeme() {
 
 function onImgSelect(imageId) {
     setImg(imageId)
-    setMemeId('main')
+    setEditedMemeId('main')
     renderMeme()
     showSection('editor')
 }
@@ -55,7 +55,7 @@ function onSetColor(color) {
 }
 
 function onDownload(elLink) {
-    setMemeId(createId())
+    setEditedMemeId(createId())
     const dataUrl = gElCanvas.toDataURL()
     elLink.href = dataUrl
     elLink.download = MEME_TITLE
