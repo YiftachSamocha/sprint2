@@ -10,8 +10,8 @@ function renderSavedMemes() {
     saved.innerHTML = ''
     for (var i = 0; i < memes.length; i++) {
         const canvas = document.createElement('canvas')
-        canvas.classList.add('meme', memes[i].id)
-        canvas.setAttribute('id', memes[i].id)
+        canvas.classList.add('meme', memes[i].canvasId)
+        canvas.setAttribute('id', memes[i].canvasId)
         canvas.onclick = onMemeSelect
         saved.appendChild(canvas)
         setEditedMeme(memes[i])
@@ -20,10 +20,10 @@ function renderSavedMemes() {
 }
 
 function onMemeSelect() {
-    editSelectedMeme(this.id)
+    editSavedMeme(this.id)
 }
 
-function editSelectedMeme(memeId) {
+function editSavedMeme(memeId) {
     const meme = getMemeById(memeId)
     removeMeme(memeId)
     setEditedMeme(meme)

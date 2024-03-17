@@ -29,9 +29,9 @@
             <div class="tools">
                 <div class="text">
                     <input type="text" name="line" oninput="onSetText(this.value)" placeholder="Enter text">
-                    <button><i class="fa-solid fa-arrow-up"></i><i class="fa-solid fa-arrow-down"></i></button>
-                    <button><i class="fa-solid fa-plus"></i></button>
-                    <button><i class="fa-solid fa-trash"></i></button>
+                    <button onclick="onSwitchLine()"><i class="fa-solid fa-arrow-up"></i><i class="fa-solid fa-arrow-down"></i></button>
+                    <button onclick="onAddLine()"><i class="fa-solid fa-plus"></i></button>
+                    <button onclick="onDeleteLine()"><i class="fa-solid fa-trash"></i></button>
                 </div>
                 <div class="design">
                     <button onclick="onChangeSize('bigger')">A+</button>
@@ -39,7 +39,7 @@
                     <button onclick="onSetAlign('left')"><i class="fa-solid fa-align-left"></i></button>
                     <button onclick="onSetAlign('center')"><i class="fa-solid fa-align-center"></i></button>
                     <button onclick="onSetAlign('right')"><i class="fa-solid fa-align-right"></i></button>
-                    <select onchange="onSetFont(this.value)">
+                    <select onchange="onSetFont(this.value)" >
                         <option value="Averia">Averia</option>
                         <option value="Livvic">Livvic</option>
                         <option value="Lobster">Lobster</option>

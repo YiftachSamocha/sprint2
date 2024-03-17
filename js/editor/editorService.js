@@ -1,19 +1,17 @@
 'use strict'
 const SIZE = 10
 var gEditedMeme = {
-    id: '',
+    canvasId: '',
     selectedImgId: '',
     selectedLineIdx: 0,
-    line: {
+    lines: [{
         txt: '',
         size: SIZE * 4,
         fillColor: '',
         strokeColor: '',
-        font: '',
+        font: 'Averia',
         align: '',
-    },
-
-
+    }],
 }
 
 function getEditedMeme() {
@@ -30,27 +28,56 @@ function setImg(imageId) {
 }
 
 function setText(text) {
-    gEditedMeme.line.txt = text
+    gEditedMeme.lines[gEditedMeme.selectedLineIdx].txt = text
 }
 
+function addLine() {
+    const line = {
+        txt: '',
+        size: SIZE * 4,
+        fillColor: '',
+        strokeColor: '',
+        font: 'Averia',
+        align: '',
+    }
+
+    gEditedMeme.lines.push(line)
+}
+
+function selectLine(lineIdx) {
+    if (lineIdx > 1) return
+    gEditedMeme.selectedLineIdx = lineIdx
+}
+
+function deleteLine() {
+    if (getEditedMeme().lines.length === 1) {
+        gEditedMeme.lines = []
+        addLine()
+        return
+    }
+    const deletedIdx = gEditedMeme.selectedLineIdx
+    gEditedMeme.lines.splice(deletedIdx, 1)
+}
+
+
 function setFillColor(color) {
-    gEditedMeme.line.fillColor = color
+    gEditedMeme.lines[gEditedMeme.selectedLineIdx].fillColor = color
 }
 
 function setStrokeColor(color) {
-    gEditedMeme.line.strokeColor = color
+    gEditedMeme.lines[gEditedMeme.selectedLineIdx].strokeColor = color
 }
 
 function setFont(font) {
-    gEditedMeme.line.font = font
+    gEditedMeme.lines[gEditedMeme.selectedLineIdx].font = font
 }
 
 function setAlign(align) {
-    gEditedMeme.line.align = align
+    gEditedMeme.lines[gEditedMeme.selectedLineIdx].align = align
 }
 
-function setEditedMemeId(id) {
-    gEditedMeme.id = id
+function setEditedMemeCanvasId(id) {
+    gEditedMeme.canvasId = id
 }
 
 function setSize(change) {
@@ -60,6 +87,6 @@ function setSize(change) {
     } else {
         memeSize = -SIZE
     }
-    gEditedMeme.line.size += memeSize
+    gEditedMeme.lines[gEditedMeme.selectedLineIdx].size += memeSize
 
 }
