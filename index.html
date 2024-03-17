@@ -16,7 +16,7 @@
         <div>Logo</div>
         <a onclick="renderSavedMemes(); showSection('saved-memes')">Memes</a>
         <a onclick="showSection('gallery')">Gallery</a>
-        <a onclick="showSection('editor')">editor</a>
+        <a onclick="showSection('editor')">Editor</a>
         <a onclick="">About</a>
     </header>
 
@@ -26,12 +26,31 @@
         <section class="editor">
             <canvas class="meme main"></canvas>
             <div class="tools">
-                <label for="line">Line:</label>
-                <input type="text" name="line" oninput="onSetText(this.value)">
+                <div class="text">
+                    <input type="text" name="line" oninput="onSetText(this.value)" placeholder="Enter text">
+                    <button><i class="fa-solid fa-arrow-up"></i><i class="fa-solid fa-arrow-down"></i></button>
+                    <button><i class="fa-solid fa-plus"></i></button>
+                    <button><i class="fa-solid fa-trash"></i></button>
+                </div>
+                <div class="design">
+                    <button>A+</button>
+                    <button>A-</button>
+                    <button><i class="fa-solid fa-align-left"></i></button>
+                    <button><i class="fa-solid fa-align-center"></i></button>
+                    <button><i class="fa-solid fa-align-right"></i></button>
+                    <select name="" id="">
+                        <option value="impact">Impact</option>
+                    </select>
+                     <button>A</button>
+                    <input type="color" name="color" oninput="onSetColor(this.value)">
 
-                <label for="color">Color:</label>
-                <input type="color" name="color" oninput="onSetColor(this.value)">
+                </div>
+                <div class="emojis"></div>
                 <a href="#" onclick="onDownload(this)">Download</a>
+
+
+
+
             </div>
         </section>
 
@@ -45,6 +64,7 @@
     <script src="js/editor/editorService.js"></script>
     <script src="js/saved-memes/savedController.js"></script>
     <script src="js/saved-memes/savedService.js"></script>
+    <script src="https://kit.fontawesome.com/f7838a60ad.js" crossorigin="anonymous"></script>
 
 </body>
 

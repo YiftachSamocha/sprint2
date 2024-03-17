@@ -2,25 +2,31 @@
     margin: 0;
     box-sizing: border-box;
 }
-header{
+
+header {
     display: flex;
     justify-content: space-around;
     align-items: center;
     height: 20vh;
     background-color: var(--main-color);
-    
+    color: white;
+
 }
-.logo{
+
+.logo {
     justify-self: start;
 }
 
-a{
+a {
     font-size: 2em;
-    
+}
+
+header *:hover {
+    color: black;
 }
 
 
 
-.hide{
+.hide {
     display: none;
 }
