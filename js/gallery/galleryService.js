@@ -1,5 +1,5 @@
 'use strict'
-var gImgs = [
+var gImgs = getFromStorage('Images') || [
     { id: createId(), url: 'img/asi.jpg', keywords: [] },
     { id: createId(), url: 'img/boy.jpg', keywords: [] },
     { id: createId(), url: 'img/cat.jpg', keywords: [] },
@@ -10,6 +10,10 @@ var gImgs = [
     { id: createId(), url: 'img/philosoraptor.jpg', keywords: [] },
 ]
 
-function getImgs(){
+function getImgs() {
     return gImgs
+}
+
+function setImgs(images) {
+    gImgs = images
 }

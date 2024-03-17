@@ -14,7 +14,7 @@
 <body onload="onInit()">
     <header>
         <div>Logo</div>
-        <a onclick="showSection('saved-memes')">Memes</a>
+        <a onclick="renderSavedMemes(); showSection('saved-memes')">Memes</a>
         <a onclick="showSection('gallery')">Gallery</a>
         <a onclick="showSection('editor')">editor</a>
         <a onclick="">About</a>
@@ -24,25 +24,27 @@
         <section class="gallery"></section>
 
         <section class="editor">
-            <canvas></canvas>
+            <canvas class="meme main"></canvas>
             <div class="tools">
                 <label for="line">Line:</label>
                 <input type="text" name="line" oninput="onSetText(this.value)">
 
                 <label for="color">Color:</label>
                 <input type="color" name="color" oninput="onSetColor(this.value)">
+                <a href="#" onclick="onDownload(this)">Download</a>
             </div>
         </section>
 
         <section class="saved-memes">
-            <div>Example</div>
         </section>
     </main>
     <script src="js/util/util.js"></script>
     <script src="js/gallery/galleryController.js"></script>
     <script src="js/gallery/galleryService.js"></script>
-    <script src="js/meme/memeController.js"></script>
-    <script src="js/meme/memeService.js"></script>
+    <script src="js/editor/editorController.js"></script>
+    <script src="js/editor/editorService.js"></script>
+    <script src="js/saved-memes/savedController.js"></script>
+    <script src="js/saved-memes/savedService.js"></script>
 
 </body>
 
