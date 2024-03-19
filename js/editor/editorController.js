@@ -5,6 +5,7 @@ var gCtx
 var gSavedMemes = []
 
 const MEME_TITLE = 'My Meme'
+const FRAME_PADDING = 5
 
 function renderMeme() {
     const currLineIdx = getEditedMeme().selectedLineIdx
@@ -13,6 +14,7 @@ function renderMeme() {
     renderLine()
     selectLine(1)
     renderLine()
+    renderFrame(currLineIdx)
     selectLine(currLineIdx)
 
 }
@@ -38,40 +40,80 @@ function renderLine() {
     const meme = getEditedMeme()
     const line = meme.lines[meme.selectedLineIdx]
     if (!line) return
+    if (line.align === '') line.align = 'center'
 
-    //color
+
     const fillColor = line.fillColor
     const strokeColor = line.strokeColor
-    gCtx.fillStyle = fillColor
-    gCtx.strokeStyle = strokeColor
-
-    //text
     const text = line.txt
     const size = line.size
     const font = line.font
     const align = line.align
     let x
     let y
+
+
+    gCtx.fillStyle = fillColor
+    gCtx.strokeStyle = strokeColor
+    gCtx.font = size + 'px ' + font
+    gCtx.textAlign = align
+    switch (align) {
+        case 'left':
+            x = FRAME_PADDING
+            break
+        case '':
+        case 'center':
+            x = gElCanvas.width / 2
+            break
+        case 'right':
+            x = gElCanvas.width - FRAME_PADDING
+    }
     if (meme.selectedLineIdx === 0) {
         y = gElCanvas.height / 4
     } else {
         y = (gElCanvas.height / 4) * 3
     }
-    gCtx.font = size + 'px ' + font
-    gCtx.textAlign = align
-    switch (align) {
-        case '':
-        case 'left':
-            x = 0
-            break
-        case 'center':
-            x = gElCanvas.width / 2
-            break
-        case 'right':
-            x = gElCanvas.width
-    }
     gCtx.fillText(text, x, y)
     gCtx.strokeText(text, x, y)
+
+
+}
+
+function renderFrame(lineIdx) {
+    const line = getEditedMeme().lines[lineIdx]
+    let x
+    let y
+    const w = gCtx.measureText(line.txt).width + 2 * FRAME_PADDING
+    const h = line.size
+
+    gCtx.textAlign = line.align
+    switch (line.align) {
+        case 'left':
+            x = FRAME_PADDING
+            break
+        case '':
+        case 'center':
+            x = gElCanvas.width / 2 - (gCtx.measureText(line.txt).width / 2) - FRAME_PADDING
+            break
+        case 'right':
+            x = gElCanvas.width - gCtx.measureText(line.txt).width - 3 * FRAME_PADDING
+    }
+    if (lineIdx === 0) {
+        y = gElCanvas.height / 4
+    } else {
+        y = (gElCanvas.height / 4) * 3
+    }
+    y = y - (line.size / 2) - 2 * FRAME_PADDING
+
+    const frame = {
+        x: x,
+        y: y,
+        w: w,
+        h: h,
+    }
+    gCtx.strokeRect(frame.x, frame.y, frame.w, frame.h)
+
+
 }
 
 function onImgSelect(imageId) {
@@ -93,17 +135,20 @@ function onSwitchLine() {
     const currLineIdx = getEditedMeme().selectedLineIdx
     if (currLineIdx === 0) {
         selectLine(1)
+        renderMeme()
     }
     else {
         selectLine(0)
+        renderMeme()
     }
     document.querySelector('.text input').value = getEditedMeme().lines[getEditedMeme().selectedLineIdx].txt
 }
 
 function onAddLine() {
-    if (getEditedMeme().selectedLineIdx === 1) return
+    if (getEditedMeme().lines.length === 2) return
     addLine()
     selectLine(1)
+    renderMeme()
     document.querySelector('.text input').value = ''
 }
 
