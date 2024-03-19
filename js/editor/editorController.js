@@ -2,19 +2,16 @@
 var gElCanvas
 var gCtx
 
-var gSavedMemes = []
-
 const MEME_TITLE = 'My Meme'
-const FRAME_PADDING = 5
 
 function renderMeme() {
     const currLineIdx = getEditedMeme().selectedLineIdx
     renderImage()
-    selectLine(0)
-    renderLine()
-    selectLine(1)
-    renderLine()
-    renderFrame(currLineIdx)
+    for (var i = 0; i < getLinesLength(); i++) {
+        selectLine(i)
+        renderLine()
+    }
+    if (getEditedMeme().isFramed) renderFrame(currLineIdx)
     selectLine(currLineIdx)
 
 }
@@ -40,8 +37,6 @@ function renderLine() {
     const meme = getEditedMeme()
     const line = meme.lines[meme.selectedLineIdx]
     if (!line) return
-    if (line.align === '') line.align = 'center'
-
 
     const fillColor = line.fillColor
     const strokeColor = line.strokeColor
@@ -49,61 +44,54 @@ function renderLine() {
     const size = line.size
     const font = line.font
     const align = line.align
-    let x
-    let y
-
+    var x = line.location.x
+    const y = line.location.y
+    const PADDING = size / 4
 
     gCtx.fillStyle = fillColor
     gCtx.strokeStyle = strokeColor
     gCtx.font = size + 'px ' + font
     gCtx.textAlign = align
+
     switch (align) {
-        case 'left':
-            x = FRAME_PADDING
-            break
         case '':
+            break
+        case 'left':
+            x = PADDING
+            break
         case 'center':
             x = gElCanvas.width / 2
             break
         case 'right':
-            x = gElCanvas.width - FRAME_PADDING
+            x = gElCanvas.width - PADDING
     }
-    if (meme.selectedLineIdx === 0) {
-        y = gElCanvas.height / 4
-    } else {
-        y = (gElCanvas.height / 4) * 3
-    }
+
     gCtx.fillText(text, x, y)
     gCtx.strokeText(text, x, y)
-
-
 }
+
 
 function renderFrame(lineIdx) {
     const line = getEditedMeme().lines[lineIdx]
-    let x
-    let y
-    const w = gCtx.measureText(line.txt).width + 2 * FRAME_PADDING
+    const PADDING = line.size / 4
+    let x = line.location.x
+    let y = line.location.y
+    const w = gCtx.measureText(line.txt).width + PADDING
     const h = line.size
 
-    gCtx.textAlign = line.align
     switch (line.align) {
-        case 'left':
-            x = FRAME_PADDING
-            break
         case '':
+            break
+        case 'left':
+            x = PADDING
+            break
         case 'center':
-            x = gElCanvas.width / 2 - (gCtx.measureText(line.txt).width / 2) - FRAME_PADDING
+            x = gElCanvas.width / 2 - (gCtx.measureText(line.txt).width / 2) - 0.5 * PADDING
             break
         case 'right':
-            x = gElCanvas.width - gCtx.measureText(line.txt).width - 3 * FRAME_PADDING
+            x = gElCanvas.width - gCtx.measureText(line.txt).width - 1.5 * PADDING
     }
-    if (lineIdx === 0) {
-        y = gElCanvas.height / 4
-    } else {
-        y = (gElCanvas.height / 4) * 3
-    }
-    y = y - (line.size / 2) - 2 * FRAME_PADDING
+    y = y - 3 * PADDING
 
     const frame = {
         x: x,
@@ -111,14 +99,17 @@ function renderFrame(lineIdx) {
         w: w,
         h: h,
     }
+    gCtx.strokeStyle = 'black'
     gCtx.strokeRect(frame.x, frame.y, frame.w, frame.h)
-
-
 }
 
 function onImgSelect(imageId) {
     setImg(imageId)
-    setEditedMemeCanvasId('main')
+    setCanvasId('main')
+    addLine()
+    const editor = document.querySelector('.meme.main')
+    setLocation(editor.width / 2, editor.height / 5 + SIZE / 2)
+    console.log(getEditedMeme())
     renderMeme()
     showSection('editor')
 }
@@ -131,32 +122,35 @@ function onSetText(txt) {
 }
 
 function onSwitchLine() {
-    if (getEditedMeme().lines.length === 1) return
     const currLineIdx = getEditedMeme().selectedLineIdx
-    if (currLineIdx === 0) {
-        selectLine(1)
-        renderMeme()
-    }
-    else {
-        selectLine(0)
-        renderMeme()
-    }
+    let nextLineIdx = currLineIdx + 1
+    if (nextLineIdx === getLinesLength()) nextLineIdx = 0
+    selectLine(nextLineIdx)
+    renderMeme()
     document.querySelector('.text input').value = getEditedMeme().lines[getEditedMeme().selectedLineIdx].txt
 }
 
 function onAddLine() {
-    if (getEditedMeme().lines.length === 2) return
     addLine()
-    selectLine(1)
+    selectLine(getLinesLength() - 1)
+    if (getEditedMeme().lines.length === 2) {
+        setLocation(gElCanvas / 2, (gElCanvas.height / 5) * 5 - SIZE)
+    }
     renderMeme()
     document.querySelector('.text input').value = ''
 }
 
 function onDeleteLine() {
     deleteLine()
-    selectLine(0)
+    if (getLinesLength() === 0) {
+        addLine()
+        selectLine(0)
+        const editor = document.querySelector('.meme.main')
+        setLocation(editor.width / 2, editor.height / 5 + SIZE / 2)
+    }
+    selectLine(getLinesLength() - 1)
     renderMeme()
-    document.querySelector('.text input').value = getEditedMeme().lines[0].txt
+    document.querySelector('.text input').value = getEditedMeme().lines[getEditedMeme().selectedLineIdx].txt
 }
 
 function onSetFillColor(color) {
@@ -184,15 +178,49 @@ function onSetAlign(align) {
     renderMeme()
 }
 
+function onSetHeight(change) {
+    let x = getEditedMeme().lines[getEditedMeme().selectedLineIdx].location.x
+    let y = getEditedMeme().lines[getEditedMeme().selectedLineIdx].location.y
+    if (change === 'higher') {
+        y -= SIZE
+    }
+    else {
+        y += SIZE
+    }
+    setLocation(x, y)
+    renderMeme()
+}
+
+function onSetLocation(x, y) {
+    setLocation(x, y)
+    renderMeme()
+}
+
 function onDownload(elLink) {
-    setEditedMemeCanvasId(createId())
+    setIsFramed(false)
+    renderMeme()
+
     const dataUrl = gElCanvas.toDataURL()
     elLink.href = dataUrl
     elLink.download = MEME_TITLE
-    addSavedMeme(gEditedMeme)
+
+    setCanvasId(createId())
+    addSavedMeme(getEditedMeme())
     saveToStorage(SAVES_MEMES_KEY, getSavedMemes())
     showSection('saved-memes')
     renderSavedMemes()
+    setIsFramed(true)
+
+}
+
+function clearEditor() {
+    clearEditedMeme()
+    const inputs = document.querySelectorAll('input')
+    inputs.forEach(element => {
+        element.value = ''
+    })
+    const fontInput = document.querySelector('select')
+    fontInput.options[0].selected = true
 }
 
 

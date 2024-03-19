@@ -4,14 +4,18 @@ var gEditedMeme = {
     canvasId: '',
     selectedImgId: '',
     selectedLineIdx: 0,
-    lines: [{
-        txt: '',
-        size: SIZE * 4,
-        fillColor: '',
-        strokeColor: '',
-        font: 'Averia',
-        align: '',
-    }],
+    lines: [],
+    isFramed: true,
+    // Line Object:
+    //    {
+    //     txt: '',
+    //     size: SIZE * 4,
+    //     fillColor: '',
+    //     strokeColor: '',
+    //     font: 'Averia',
+    //     align: '',
+    //     location: { x: '', y: '', },
+    // }
 }
 
 function getEditedMeme() {
@@ -20,6 +24,16 @@ function getEditedMeme() {
 
 function setEditedMeme(meme) {
     gEditedMeme = meme
+}
+
+function clearEditedMeme() {
+    gEditedMeme = {
+        canvasId: '',
+        selectedImgId: '',
+        selectedLineIdx: 0,
+        lines: [],
+        isFramed: true,
+    }
 }
 
 
@@ -32,31 +46,30 @@ function setText(text) {
 }
 
 function addLine() {
+    const canvas = document.querySelector('.meme.main')
     const line = {
         txt: '',
         size: SIZE * 4,
         fillColor: '',
         strokeColor: '',
         font: 'Averia',
-        align: '',
+        align: 'center',
+        location: { x: canvas.width / 2, y: canvas.height / 2, },
     }
-
     gEditedMeme.lines.push(line)
 }
 
 function selectLine(lineIdx) {
-    if (lineIdx > 1) return
     gEditedMeme.selectedLineIdx = lineIdx
 }
 
 function deleteLine() {
-    if (getEditedMeme().lines.length === 1) {
-        gEditedMeme.lines = []
-        addLine()
-        return
-    }
     const deletedIdx = gEditedMeme.selectedLineIdx
     gEditedMeme.lines.splice(deletedIdx, 1)
+}
+
+function getLinesLength() {
+    return gEditedMeme.lines.length
 }
 
 
@@ -76,7 +89,12 @@ function setAlign(align) {
     gEditedMeme.lines[gEditedMeme.selectedLineIdx].align = align
 }
 
-function setEditedMemeCanvasId(id) {
+function setLocation(x, y) {
+    gEditedMeme.lines[gEditedMeme.selectedLineIdx].location.x = x
+    gEditedMeme.lines[gEditedMeme.selectedLineIdx].location.y = y
+}
+
+function setCanvasId(id) {
     gEditedMeme.canvasId = id
 }
 
@@ -88,5 +106,8 @@ function setSize(change) {
         memeSize = -SIZE
     }
     gEditedMeme.lines[gEditedMeme.selectedLineIdx].size += memeSize
+}
 
+function setIsFramed(isFramed) {
+    gEditedMeme.isFramed = isFramed
 }

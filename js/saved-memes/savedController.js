@@ -1,4 +1,5 @@
 'use strict'
+var gSavedMemes = []
 function renderSavedMemes() {
     const memes = getFromStorage('Saved Memes')
 
@@ -17,6 +18,7 @@ function renderSavedMemes() {
         setEditedMeme(memes[i])
         renderMeme()
     }
+    clearEditor()
 }
 
 function onMemeSelect() {
