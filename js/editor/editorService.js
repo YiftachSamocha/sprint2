@@ -55,7 +55,7 @@ function setText(text) {
 function addLine() {
     const canvas = document.querySelector('.meme.main')
     const line = {
-        txt: '',
+        txt: 'Enter Text!',
         size: SIZE * 4,
         fillColor: '',
         strokeColor: '',

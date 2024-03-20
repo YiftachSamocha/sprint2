@@ -3,29 +3,73 @@
     box-sizing: border-box;
 }
 
+body{
+    font-family: var(--main-font);
+    font-size: 32px;
+}
+
 header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    height: 2.8125em;
+    background-color: var(--header-color);
+
+}
+
+.logo img {
+    justify-self: start;
+    height: 1.75em;
+    width: auto;
+}
+
+.headers * {
+    font-size: 1.375em;
+    color: white;
+
+    padding: 0.4em;
+}
+
+.headers> *:not(:last-child) {
+    border-inline-end: 1px solid var(--dark-color);
+}
+
+.headers *:hover {
+    color: var(--dark-color);
+}
+
+.current{
+    color: var(--dark-color);
+    border-block-end: 2px solid var(--dark-color) ;
+}
+
+.filter {
+    height: 6.25em;
+}
+
+.credits {
+    height: 12.5em;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    height: 20vh;
-    background-color: var(--main-color);
+}
+
+.creatorImg img {
+    height: 10em;
+    width: auto;
+}
+
+footer {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+
+    height: 4.575em;
+    background-color: var(--header-color);
     color: white;
 
-}
-
-header div{
-    font-family: 'Timmana';
-}
-.logo {
-    justify-self: start;
-}
-
-a {
-    font-size: 2em;
-}
-
-header *:hover {
-    color: black;
 }
 
 

@@ -1,4 +1,9 @@
 @font-face {
+    font-family: 'Montserrat';
+    src: url('fonts/Montserrat.ttf');
+}
+
+@font-face {
     font-family: 'Averia';
     src: url('fonts/AveriaSerifLibre-LightItalic.ttf');
 }

@@ -17,8 +17,11 @@ function onSwitchLine() {
 function onAddLine() {
     addLine()
     selectLine(getLinesLength() - 1)
-    if (getEditedMeme().lines.length === 2) {
-        setLocation(gElCanvas / 2, (gElCanvas.height / 5) * 5 - SIZE)
+    const elCanvas = document.querySelector('.meme.main')
+    if (getLinesLength() === 1) {
+        setLocation(elCanvas.width / 2, elCanvas.height / 5 + SIZE / 2)
+    } else if (getLinesLength() === 2) {
+        setLocation(elCanvas / 2, (elCanvas.height / 5) * 5 - SIZE)
     }
     renderMeme()
     document.querySelector('.text input').value = ''

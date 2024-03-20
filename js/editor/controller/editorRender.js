@@ -1,6 +1,7 @@
 'use strict'
 var gElCanvas
 var gCtx
+const CANVAS_SIZE= 300
 
 const MEME_TITLE = 'My Meme'
 
@@ -21,20 +22,26 @@ function renderMeme() {
 }
 
 function renderImage() {
-    const meme = getEditedMeme()
-    //image
-    const image = document.getElementById(meme.selectedImgId)
-    const gallery = document.querySelector('.gallery')
-    gallery.classList.remove('hide')
+    const imgId = getEditedMeme().selectedImgId
+    const imgIdx = parseInt(imgId.substring(3))
+    const image = new Image
+    image.src = `img/gallery-original/${imgIdx}.jpg`
 
-    gElCanvas = document.querySelector('.meme.' + meme.canvasId)
+
+
+    gElCanvas = document.querySelector('.meme.' + getEditedMeme().canvasId);
     gCtx = gElCanvas.getContext('2d')
+    const imageHeight = getSizes(imgIdx).h
+    const imageWidth = getSizes(imgIdx).w
+    const canvasHeight = CANVAS_SIZE*1.5
+    const canvasWidth = (canvasHeight * imageWidth) / imageHeight
+    gElCanvas.width = canvasWidth
+    gElCanvas.height = canvasHeight
 
-    gElCanvas.height = image.offsetHeight
-    gElCanvas.width = image.offsetWidth
 
-    gallery.classList.add('hide')
-    gCtx.drawImage(image, 0, 0, gElCanvas.width, gElCanvas.height)
+
+    gCtx.drawImage(image, 0, 0, canvasWidth, canvasHeight)
+
 }
 
 function renderLine() {
@@ -147,7 +154,7 @@ function startDrag(event) {
     const endY = frame.y + frame.h
     if (event.offsetX >= startX && event.offsetX <= endX && event.offsetY >= startY && event.offsetY <= endY) {
         setIsDragged(true)
-        setDragDifference(event.offsetX - startX, endY- event.offsetY)
+        setDragDifference(event.offsetX - startX, endY - event.offsetY)
     }
 }
 

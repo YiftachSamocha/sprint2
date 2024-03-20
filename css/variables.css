@@ -1,5 +1,9 @@
 :root{
-    --main-color: rgb(248, 165, 10);
+    --header-color: #ff7f00 ;
+    --bg-color: #e3e3e3;
+    --dark-color: black;
+    --main-font: 'Montserrat'
+    
     
 }
 

@@ -1,13 +1,26 @@
 .gallery {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5em;
+    
+
+    background-color: var(--bg-color);
+    padding-inline: 2.5em;
+    padding-block: 2em;
+
 }
 
-.image {
-    width: 150px;
-    height: auto;
+.saved-memes{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5em;
+    
+
+    background-color: var(--bg-color);
+    padding-inline: 2.5em;
+    padding-block: 2em;
 }
-img{
-    width: 100%;
+.saved-memes canvas{
+    width: 10em;
+    height: auto;
 }

@@ -14,13 +14,15 @@
 
 <body onload="onInit()">
     <header>
-        <div>Logo</div>
-        <a onclick="renderSavedMemes(); showSection('saved-memes')">Memes</a>
-        <a onclick="showSection('gallery')">Gallery</a>
-        <a onclick="showSection('editor')">Editor</a>
-        <a onclick="">About</a>
-    </header>
+        <div class="logo"><img src="img/LOGO.png"></div>
+        <div class="headers">
+            <a onclick="showSection('saved-memes')" class="saved-memes-header">Memes</a>
+            <a onclick="showSection('gallery')" class="gallery-header">Gallery</a>
+            <a onclick="">About</a>
+        </div>
 
+    </header>
+    <section class="filter">Filter</section>
     <main>
         <section class="gallery"></section>
 
@@ -29,38 +31,49 @@
             <div class="tools">
                 <div class="text">
                     <input type="text" name="line" oninput="onSetText(this.value)" placeholder="Enter text">
-                    <button onclick="onSwitchLine()"><i class="fa-solid fa-repeat"></i></button>
-                    <button onclick="onAddLine()"><i class="fa-solid fa-plus"></i></button>
-                    <button onclick="onDeleteLine()"><i class="fa-solid fa-trash"></i></button>
+                    <div>
+                        <button onclick="onSwitchLine()"><img src="img/buttons/switch.png"></button>
+                        <button onclick="onAddLine()"><img src="img/buttons/add.png"></button>
+                        <button onclick="onDeleteLine()"><img src="img/buttons/trash.png"></button>
+                    </div>
                 </div>
                 <div class="design">
-                    <button onclick="onChangeSize('bigger')">A+</button>
-                    <button onclick="onChangeSize('smaller')">A-</button>
-                    <button onclick="onSetAlign('left')"><i class="fa-solid fa-align-left"></i></button>
-                    <button onclick="onSetAlign('center')"><i class="fa-solid fa-align-center"></i></button>
-                    <button onclick="onSetAlign('right')"><i class="fa-solid fa-align-right"></i></button>
-                    <button onclick="onSetHeight('higher')" ><i class="fa-solid fa-arrow-up"></i></button>
-                    <button onclick="onSetHeight('lower')"><i class="fa-solid fa-arrow-down"></i></button>
-                    <select onchange="onSetFont(this.value)">
-                        <option value="Averia">Averia</option>
-                        <option value="Livvic">Livvic</option>
-                        <option value="Lobster">Lobster</option>
-                        <option value="Passion">Passion</option>
-                        <option value="Timmana">Timmana</option>
-                    </select>
-                    <label for="strokeColor"><i class="fa-solid fa-s"></i></label>
-                    <input type="color" name="color" id="strokeColor" oninput="onSetStrokeColor(this.value)"
-                        class="hide"> </input>
+                    <div class="location">
+                        <button onclick="onChangeSize('bigger')"><img src="img/buttons/increase.png"></button>
+                        <button onclick="onChangeSize('smaller')"><img src="img/buttons/decrease.png"></button>
+                        <button onclick="onSetAlign('left')"><img src="img/buttons/align-to-left.png"></button>
+                        <button onclick="onSetAlign('center')"><img
+                                src="img/buttons/center-text-alignment.png"></button>
+                        <button onclick="onSetAlign('right')"><img src="img/buttons/align-to-right.png"></button>
+                    </div>
+                    <div class="decorate">
+                        <div class="select">
+                            <select onchange="onSetFont(this.value)">
+                                <option value="Averia">Averia</option>
+                                <option value="Livvic">Livvic</option>
+                                <option value="Lobster">Lobster</option>
+                                <option value="Passion">Passion</option>
+                                <option value="Timmana">Timmana</option>
+                            </select>
+                        </div>
+                        <button>
+                            <label for="strokeColor"><img src="img/buttons/text stroke.png"></label>
+                        </button>
 
-                    <label for="fillColor"><i class="fa-solid fa-palette"></i></label>
-                    <input type="color" name="fillColor" id="fillColor" oninput="onSetFillColor(this.value)"
-                        class="hide"> </input>
+
+                        <input type="color" name="color" id="strokeColor" oninput="onSetStrokeColor(this.value)"
+                            class="hide"> </input>
+                        <button><label for="fillColor"><img src="img/buttons/pallate.png"></label></button>
+
+                        <input type="color" name="fillColor" id="fillColor" oninput="onSetFillColor(this.value)"
+                            class="hide"> </input>
+                    </div>
 
 
 
 
                 </div>
-                <div class="emojis"></div>
+                <div class="stickers">Stickers</div>
                 <a href="#" onclick="onDownload(this)">Download</a>
 
 
@@ -72,6 +85,17 @@
         <section class="saved-memes">
         </section>
     </main>
+    <section class="credits">
+        <div class="creatorImg"><img src="img/creator.png"></div>
+        <div class="creatorInfo">
+            <h2>Yiftch Samocha</h2>
+            <p>Winner of the Nobel Prize for Computers, CEO of Samocha Ltd., Vogue magazine model</p>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="logo"><img src="img/LOGO.png"></div>
+        <small>All rights reserved 2024</small>
+    </footer>
     <script src="js/util/util.js"></script>
     <script src="js/gallery/galleryController.js"></script>
     <script src="js/gallery/galleryService.js"></script>
