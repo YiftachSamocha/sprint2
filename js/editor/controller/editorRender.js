@@ -30,16 +30,15 @@ function renderImage() {
     gElCanvas = document.querySelector('.meme.' + meme.canvasId)
     gCtx = gElCanvas.getContext('2d')
 
-    gElCanvas.height = image.clientHeight
-    gElCanvas.width = image.clientWidth
+    gElCanvas.height = image.offsetHeight
+    gElCanvas.width = image.offsetWidth
 
     gallery.classList.add('hide')
     gCtx.drawImage(image, 0, 0, gElCanvas.width, gElCanvas.height)
 }
 
 function renderLine() {
-    const meme = getEditedMeme()
-    const line = meme.lines[meme.selectedLineIdx]
+    const line = getLine()
     if (!line) return
 
     const fillColor = line.fillColor
@@ -130,13 +129,14 @@ function renderFrame(lineIdx) {
 }
 
 function drag(event) {
-    if (!getLine().isDragged) return
+    if (!getLine().drag.isDragged) return
     const x = event.offsetX - getLine().drag.loc.w
-    const y = event.offsetY - getLine().drag.loc.h
+    const y = event.offsetY + getLine().drag.loc.h
     setLocation(x, y)
     setAlign('')
     renderMeme()
 }
+
 
 function startDrag(event) {
     const line = getLine()
@@ -147,7 +147,7 @@ function startDrag(event) {
     const endY = frame.y + frame.h
     if (event.offsetX >= startX && event.offsetX <= endX && event.offsetY >= startY && event.offsetY <= endY) {
         setIsDragged(true)
-        setDragDifference(event.offsetX - startX, event.offsetY - startY)
+        setDragDifference(event.offsetX - startX, endY- event.offsetY)
     }
 }
 

@@ -6,6 +6,7 @@ var gEditedMeme = {
     selectedLineIdx: 0,
     lines: [],
     isFramed: true,
+    drag: { isDragged: false, loc: { w: 0, h: 0 } }
     // Line Object:
     //    {
     //     txt: '',
@@ -15,11 +16,16 @@ var gEditedMeme = {
     //     font: 'Averia',
     //     align: '',
     //     location: { x: '', y: '', },
+    //     isDragged: false,
     // }
 }
 
 function getEditedMeme() {
     return gEditedMeme
+}
+
+function getLine() {
+    return gEditedMeme.lines[gEditedMeme.selectedLineIdx]
 }
 
 function setEditedMeme(meme) {
@@ -33,6 +39,7 @@ function clearEditedMeme() {
         selectedLineIdx: 0,
         lines: [],
         isFramed: true,
+        drag: { isDragged: false, loc: { w: 0, h: 0 } }
     }
 }
 
@@ -55,6 +62,7 @@ function addLine() {
         font: 'Averia',
         align: 'center',
         location: { x: canvas.width / 2, y: canvas.height / 2, },
+        drag: { isDragged: false, loc: { w: 0, h: 0 } }
     }
     gEditedMeme.lines.push(line)
 }
@@ -110,4 +118,13 @@ function setSize(change) {
 
 function setIsFramed(isFramed) {
     gEditedMeme.isFramed = isFramed
+}
+
+function setIsDragged(isDragged) {
+    gEditedMeme.lines[gEditedMeme.selectedLineIdx].drag.isDragged = isDragged
+}
+
+function setDragDifference(w, h) {
+    gEditedMeme.lines[gEditedMeme.selectedLineIdx].drag.loc.w = w
+    gEditedMeme.lines[gEditedMeme.selectedLineIdx].drag.loc.h = h
 }
