@@ -5,7 +5,6 @@
 
 body{
     font-family: var(--main-font);
-    font-size: 32px;
 }
 
 header {
@@ -44,6 +43,17 @@ header {
     border-block-end: 2px solid var(--dark-color) ;
 }
 
+.menu-btn{
+    display: none;
+    color: white;
+    margin-inline: 2em;
+    cursor: pointer;
+}
+
+.menu-btn:hover{
+    color: black;
+}
+
 .filter {
     height: 6.25em;
 }
@@ -53,6 +63,12 @@ header {
     display: flex;
     justify-content: space-around;
     align-items: center;
+}
+
+.creatorInfo {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 .creatorImg img {
@@ -66,7 +82,7 @@ footer {
     align-items: center;
     flex-direction: column;
 
-    height: 4.575em;
+    height: 4.5em;
     background-color: var(--header-color);
     color: white;
 

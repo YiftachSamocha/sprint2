@@ -1,20 +1,21 @@
-.editor{
+.editor {
     display: flex;
     justify-content: space-around;
     align-items: center;
     gap: 20px;
 
-    height: 15.5em;
+    min-height: 15.5em;
+    min-width: 350px;
     background-color: var(--bg-color);
 }
-.meme.main{
+
+.meme.main {
     border: 2px solid black;
-    aspect-ratio: 0;
 }
 
-.editor .tools img{
-   height: 80%;
-   width: auto;
+.editor .tools img {
+    height: 80%;
+    width: auto;
 }
 
 .tools {
@@ -23,14 +24,19 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    gap: 1em;
+    margin-block: 1em;
 }
-.text input{
+
+.text input {
     border-radius: 5px;
     border-color: white;
     border-style: solid;
     padding: 0;
 }
-.text, .design{
+
+.text,
+.design {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -39,25 +45,49 @@
 }
 
 
-button, .select{
-    height: 4em;
-    width: 4em;
+.editor button,
+.select {
+    height: 3em;
+    width: 3em;
     background-color: white;
     border-radius: 5px;
     border-color: white;
     border-style: solid;
-    padding: 0;   
+    padding: 0;
+    cursor: pointer;
 }
 
-.decorate{
+.decorate {
     display: flex;
     justify-content: space-between;
     width: 100%;
 }
-.select{
+
+
+.decorate button {
+    position: relative; 
+}
+
+
+input[type="color"] {
+    position: absolute;
+    top: 2em; 
+    right: 10.5em; 
+    visibility: hidden;
+}
+
+
+
+.select {
     width: 60%;
     height: 100%;
 }
-select{
+
+select {
     border: 0;
+}
+
+.select,
+.text input {
+    height: 3em;
 }

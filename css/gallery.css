@@ -2,7 +2,7 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1.5em;
-    
+
 
     background-color: var(--bg-color);
     padding-inline: 2.5em;
@@ -10,17 +10,23 @@
 
 }
 
-.saved-memes{
+.saved-memes {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1.5em;
-    
+
 
     background-color: var(--bg-color);
+    min-height: calc(100vh - 7.3125em);
     padding-inline: 2.5em;
     padding-block: 2em;
 }
-.saved-memes canvas{
+
+.saved-memes canvas {
     width: 10em;
     height: auto;
+}
+
+.saved-memes p {
+    grid-column: 1/4;
 }

@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/mq.css">
 </head>
 
 <body onload="onInit()">
@@ -20,6 +21,7 @@
             <a onclick="showSection('gallery')" class="gallery-header">Gallery</a>
             <a onclick="">About</a>
         </div>
+        <div class="menu-btn" onclick="toggleMenu()">☰</div>
 
     </header>
     <section class="filter">Filter</section>
@@ -57,28 +59,28 @@
                             </select>
                         </div>
                         <button>
-                            <label for="strokeColor"><img src="img/buttons/text stroke.png"></label>
+                            <label for="strokeColor">
+                                <img src="img/buttons/text stroke.png" alt="Stroke Color Picker">
+                            </label>
                         </button>
-
-
-                        <input type="color" name="color" id="strokeColor" oninput="onSetStrokeColor(this.value)"
-                            class="hide"> </input>
-                        <button><label for="fillColor"><img src="img/buttons/pallate.png"></label></button>
-
-                        <input type="color" name="fillColor" id="fillColor" oninput="onSetFillColor(this.value)"
-                            class="hide"> </input>
+                        <!-- Stroke color input -->
+                        <input type="color" id="strokeColor" oninput="onSetStrokeColor(this.value)" >
+                        
+                        <!-- Button to trigger fill color picker -->
+                        <button>
+                            <label for="fillColor">
+                                <img src="img/buttons/pallate.png" alt="Fill Color Picker">
+                            </label>
+                        </button>
+                        <!-- Fill color input -->
+                        <input type="color" id="fillColor" oninput="onSetFillColor(this.value)" >
+                        
+                        
                     </div>
-
-
-
 
                 </div>
                 <div class="stickers">Stickers</div>
                 <a href="#" onclick="onDownload(this)">Download</a>
-
-
-
-
             </div>
         </section>
 
@@ -104,7 +106,6 @@
     <script src="js/editor/editorService.js"></script>
     <script src="js/saved-memes/savedController.js"></script>
     <script src="js/saved-memes/savedService.js"></script>
-    <script src="https://kit.fontawesome.com/f7838a60ad.js" crossorigin="anonymous"></script>
 
 </body>
 

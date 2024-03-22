@@ -1,7 +1,6 @@
 'use strict'
 var gElCanvas
 var gCtx
-const CANVAS_SIZE= 300
 
 const MEME_TITLE = 'My Meme'
 
@@ -33,8 +32,16 @@ function renderImage() {
     gCtx = gElCanvas.getContext('2d')
     const imageHeight = getSizes(imgIdx).h
     const imageWidth = getSizes(imgIdx).w
-    const canvasHeight = CANVAS_SIZE*1.5
-    const canvasWidth = (canvasHeight * imageWidth) / imageHeight
+    var canvasHeight
+    var canvasWidth
+    if (window.innerWidth <= 350) {
+        canvasWidth = gCanvasSize * 2
+        canvasHeight = (canvasWidth * imageHeight) / imageWidth
+    } else {
+        canvasHeight = gCanvasSize
+        canvasWidth = (canvasHeight * imageWidth) / imageHeight
+    }
+
     gElCanvas.width = canvasWidth
     gElCanvas.height = canvasHeight
 
