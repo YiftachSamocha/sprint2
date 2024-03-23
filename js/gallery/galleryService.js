@@ -20,8 +20,6 @@ function createImgs() {
             keywords: insertKeyWords(i),
             width: getImgSizes(`img/gallery-original/${i}.jpg`,).w,
             height: getImgSizes(`img/gallery-original/${i}.jpg`,).h,
-            width: getImgSizes(`img/gallery-original/${i}.jpg`,).w,
-            height: getImgSizes(`img/gallery-original/${i}.jpg`,).h,
 
         }
         imgs.push(img)
@@ -64,7 +62,6 @@ function insertKeyWords(imgIdx) {
             break
         case 6:
             keywords = ['funny', 'uniqe']
-            keywords = ['funny', 'uniqe']
             break
         case 7:
             keywords = ['baby', 'suprize']
@@ -83,13 +80,11 @@ function insertKeyWords(imgIdx) {
             break
         case 12:
             keywords = ['israeli', 'uniqe']
-            keywords = ['israeli', 'uniqe']
             break
         case 13:
             keywords = ['happy', 'movie']
             break
         case 14:
-            keywords = ['movie', 'suprize']
             keywords = ['movie', 'suprize']
             break
         case 15:
@@ -97,13 +92,11 @@ function insertKeyWords(imgIdx) {
             break
         case 16:
             keywords = ['evil', 'happy']
-            keywords = ['evil', 'happy']
             break
         case 17:
             keywords = ['president',]
             break
         case 18:
-            keywords = ['movie',]
             keywords = ['movie',]
             break
     }
