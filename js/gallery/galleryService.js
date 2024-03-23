@@ -18,14 +18,28 @@ function createImgs() {
             id: 'id-' + i,
             url: `img/gallery-original/${i}.jpg`,
             keywords: insertKeyWords(i),
-            width: getImgSizes(i).w,
-            height: getImgSizes(i).h,
+            width: getImgSizes(`img/gallery-original/${i}.jpg`,).w,
+            height: getImgSizes(`img/gallery-original/${i}.jpg`,).h,
 
         }
         imgs.push(img)
     }
     saveToStorage(IMAGES_TITLE, imgs)
     return imgs
+}
+
+function addImage(url) {
+    const idx= getImgs().length+1
+    const img = {
+        id: 'id-' + idx,
+        url: url,
+        keywords: [],
+        width: getImgSizes(url).w,
+        height: getImgSizes(url).h,
+
+    }
+    gImgs.push(img)
+    saveToStorage(IMAGES_TITLE, gImgs)
 }
 
 function insertKeyWords(imgIdx) {
@@ -47,7 +61,7 @@ function insertKeyWords(imgIdx) {
             keywords = ['baby', 'funny', 'angry']
             break
         case 6:
-            keywords = ['funny',  'uniqe']
+            keywords = ['funny', 'uniqe']
             break
         case 7:
             keywords = ['baby', 'suprize']
@@ -65,25 +79,25 @@ function insertKeyWords(imgIdx) {
             keywords = ['fight', 'happy']
             break
         case 12:
-            keywords = ['israeli',  'uniqe']
+            keywords = ['israeli', 'uniqe']
             break
         case 13:
             keywords = ['happy', 'movie']
             break
         case 14:
-            keywords = ['movie',  'suprize']
+            keywords = ['movie', 'suprize']
             break
         case 15:
             keywords = ['movie', 'fight']
             break
         case 16:
-            keywords = ['evil',  'happy']
+            keywords = ['evil', 'happy']
             break
         case 17:
             keywords = ['president',]
             break
         case 18:
-            keywords = ['movie', ]
+            keywords = ['movie',]
             break
     }
     return keywords

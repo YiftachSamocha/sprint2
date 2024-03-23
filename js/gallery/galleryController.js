@@ -4,7 +4,8 @@
 function renderGallery() {
     document.querySelector('.gallery').innerHTML = ''
     for (var i = 1; i <= getImgs().length; i++) {
-        renderImgGallery(i)
+        const src = getImgs()[i].url
+        renderImgGallery(src, i)
     }
     renderKeywords()
 }
@@ -33,7 +34,7 @@ function filterGallery(input) {
 
 }
 
-function renderImgGallery(idx) {
+function renderImgGallery(src, idx) {
     const gallery = document.querySelector('.gallery')
     var canvas = document.createElement('canvas')
     var ctx = canvas.getContext('2d')
@@ -42,7 +43,7 @@ function renderImgGallery(idx) {
     canvas.setAttribute('id', id)
 
 
-    img.src = 'img/gallery-original/' + idx + '.jpg'
+    img.src = src
 
     img.onload = function () {
         var size = Math.min(img.width, img.height)
@@ -104,9 +105,34 @@ function onImgSelect(imageId) {
     renderStickersGallery()
 }
 
-function getImgSizes(idx) {
+function randomImg() {
+    const idx = Math.floor(Math.random() * getImgs().length) + 1
+    const id = 'id-' + idx
+    onImgSelect(id)
+
+}
+
+function uploadImg() {
+    const input = document.getElementById('imgInput');
+    const image = new Image
+
+    const file = input.files[0];
+    const reader = new FileReader();
+
+    reader.onload = function (e) {
+        image.src = e.target.result;
+        image.style.display = 'block';
+        addImage(image.src)
+        renderGallery()
+    }
+
+    reader.readAsDataURL(file);
+
+}
+
+function getImgSizes(src) {
     const img = new Image()
-    img.src = `img/gallery-original/${idx}.jpg`
+    img.src = src
     const dimensions = { w: img.width, h: img.height }
     img.remove()
 

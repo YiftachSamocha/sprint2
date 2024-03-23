@@ -84,6 +84,21 @@ header {
     grid-template-rows: 1fr 1fr 1fr;
 }
 
+.img-functions{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.img-functions button{
+    border: 0;
+    background-color: white;
+    font-family: var(--main-font);
+    margin-inline: 3em;
+    margin-block: 1em;
+    cursor: pointer;
+}
+
 
 
 
