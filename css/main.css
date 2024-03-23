@@ -56,7 +56,38 @@ header {
 
 .filter {
     height: 6.25em;
+    display: flex;
+    gap: 2em;
+    align-items: center;
+    margin: 1em;
 }
+.filter input{
+    width: 15em;
+    border: 0;
+    border-block-end: 1px solid black;
+}
+.keywords{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 0.5em;
+}
+
+.filter button{
+    background: none;
+    border: 0;
+    font-family: var(--main-font);
+}
+
+.opened-keywords{
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+}
+
+
+
+
+
 
 .credits {
     height: 12.5em;

@@ -8,8 +8,7 @@ const mobileSize = 100
 
 function onInit() {
     determineImgSize()
-    renderGallery()
-    renderSavedMemes()
+    insertKeywordsDataOptions()
     showSection('gallery')
 
 }
@@ -56,6 +55,12 @@ function showSection(sectionName) {
         }
     }
     if (sectionName === 'gallery') {
+        renderGallery()
+    }
+    if (sectionName === 'saved-memes') {
+        renderSavedMemes()
+    }
+    if (sectionName === 'gallery') {
         document.querySelector('.gallery-header').classList.add('current')
         document.querySelector('.saved-memes-header').classList.remove('current')
     } else if (sectionName === 'saved-memes') {
@@ -65,10 +70,6 @@ function showSection(sectionName) {
         document.querySelector('.gallery-header').classList.remove('current')
         document.querySelector('.saved-memes-header').classList.remove('current')
     }
-
-
-
-
 
 }
 

@@ -24,7 +24,11 @@
         <div class="menu-btn" onclick="toggleMenu()">☰</div>
 
     </header>
-    <section class="filter">Filter</section>
+    <section class="filter">
+        <input list="keywords" oninput="filterGallery(this.value)">
+        <datalist id="keywords"></datalist>
+        <div class="keywords"></div>
+    </section>
     <main>
         <section class="gallery"></section>
 
@@ -64,8 +68,8 @@
                             </label>
                         </button>
                         <!-- Stroke color input -->
-                        <input type="color" id="strokeColor" oninput="onSetStrokeColor(this.value)" >
-                        
+                        <input type="color" id="strokeColor" oninput="onSetStrokeColor(this.value)">
+
                         <!-- Button to trigger fill color picker -->
                         <button>
                             <label for="fillColor">
@@ -73,9 +77,9 @@
                             </label>
                         </button>
                         <!-- Fill color input -->
-                        <input type="color" id="fillColor" oninput="onSetFillColor(this.value)" >
-                        
-                        
+                        <input type="color" id="fillColor" oninput="onSetFillColor(this.value)">
+
+
                     </div>
 
                 </div>
