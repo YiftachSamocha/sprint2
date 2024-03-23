@@ -101,6 +101,7 @@ function onImgSelect(imageId) {
     selectLine(0)
     renderMeme()
     showSection('editor')
+    renderStickersGallery()
 }
 
 function getImgSizes(idx) {

@@ -46,7 +46,8 @@
 
 
 .editor button,
-.select {
+.select,
+.stickers-container {
     height: 3em;
     width: 3em;
     background-color: white;
@@ -91,3 +92,15 @@ select {
 .text input {
     height: 3em;
 }
+.stickers-container, 
+.stickers{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+.sticker{
+    font-size: 2em;
+}
+
+

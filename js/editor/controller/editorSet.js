@@ -67,22 +67,19 @@ function onSetAlign(align) {
     renderMeme()
 }
 
-function onSetHeight(change) {
-    let x = getEditedMeme().lines[getEditedMeme().selectedLineIdx].location.x
-    let y = getEditedMeme().lines[getEditedMeme().selectedLineIdx].location.y
-    if (change === 'higher') {
-        y -= SIZE
-    }
-    else {
-        y += SIZE
-    }
-    setLocation(x, y)
-    renderMeme()
-}
 
 function onSetLocation(x, y) {
     setLocation(x, y)
     renderMeme()
+}
+
+function onAddSticker(sticker){
+    addLine()
+    selectLine(getLinesLength() - 1)
+    onSetText(sticker)
+    renderMeme()
+    document.querySelector('.text input').value = sticker
+
 }
 
 function onDownload(elLink) {

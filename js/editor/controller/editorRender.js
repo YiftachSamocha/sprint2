@@ -171,6 +171,27 @@ function endDrag() {
     setIsDragged(false)
 }
 
+function renderStickersGallery() {
+    const idx = gStickers.idx
+    var stickersHTML = ''
+    const stickers = document.querySelector('.stickers')
+    for (var i = idx; i < idx + 3; i++) {
+        stickersHTML += `<p class="sticker" onclick="onAddSticker('${gStickers.stickers[i]}')">${gStickers.stickers[i]}</p>`
+    }
+    stickers.innerHTML = stickersHTML
+}
+
+function moveToMoreStickers(direction){
+    if (direction === 'left') {
+        if (gStickers.idx - 3 < 0) return
+        gStickers.idx -= 3
+    } else {
+        if (gStickers.idx + 3 > gStickers.stickers.length-1) return
+        gStickers.idx += 3
+    }
+    renderStickersGallery()
+}
+
 
 
 function addMovement() {
