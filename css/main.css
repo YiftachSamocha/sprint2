@@ -84,6 +84,32 @@ header {
     grid-template-rows: 1fr 1fr 1fr;
 }
 
+.img-functions{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.img-functions button{
+    border: 0;
+    background-color: white;
+    font-family: var(--main-font);
+    margin-inline: 3em;
+    margin-block: 1em;
+    cursor: pointer;
+}
+
+.hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
 
 
 

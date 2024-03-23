@@ -102,3 +102,7 @@ function toggleMenu() {
 
     }
 }
+
+function toggleHide() {
+    document.getElementById('imgInput').classList.toggle('hide')
+}

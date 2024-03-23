@@ -3,8 +3,9 @@
 
 function renderGallery() {
     document.querySelector('.gallery').innerHTML = ''
-    for (var i = 1; i <= getImgs().length; i++) {
-        renderImgGallery(i)
+    for (var i = 0; i < getImgs().length; i++) {
+        const src = getImgs()[i].url
+        renderImgGallery(src, i)
     }
     renderKeywords()
 }
@@ -33,16 +34,16 @@ function filterGallery(input) {
 
 }
 
-function renderImgGallery(idx) {
+function renderImgGallery(src, idx) {
     const gallery = document.querySelector('.gallery')
     var canvas = document.createElement('canvas')
     var ctx = canvas.getContext('2d')
     var img = new Image()
-    const id = getImgs()[idx - 1].id
+    const id = getImgs()[idx].id
     canvas.setAttribute('id', id)
 
 
-    img.src = 'img/gallery-original/' + idx + '.jpg'
+    img.src = src
 
     img.onload = function () {
         var size = Math.min(img.width, img.height)
@@ -104,19 +105,45 @@ function onImgSelect(imageId) {
     renderStickersGallery()
 }
 
-function getImgSizes(idx) {
-    const img = new Image()
-    img.src = `img/gallery-original/${idx}.jpg`
-    const dimensions = { w: img.width, h: img.height }
-    img.remove()
+function randomImg() {
+    const idx = Math.floor(Math.random() * getImgs().length) + 1
+    const id = 'id-' + idx
+    onImgSelect(id)
 
-    return dimensions
+}
+
+function uploadImg() {
+    toggleHide()
+    const input = document.getElementById('imgInput')
+    const file = input.files[0]
+    const reader = new FileReader()
+
+    reader.onload = function (e) {
+        const image = new Image()
+        image.src = e.target.result
+        image.style.display = 'block'
+        image.onload = function () {
+            addImage(image.src)
+            setImgSize(image.width, image.height, getImgs().length - 1)
+            saveToStorage(IMAGES_TITLE, getImgs())
+            renderGallery()
+        }
+
+    }
+
+    reader.readAsDataURL(file);
+
+}
+
+function getImgSizes(src) {
+    const img = new Image()
+    img.src = src
+    const dimentions = { w: img.naturalWidth, h: img.naturalHeight }
+    return dimentions
 }
 
 function insertKeywordsDataOptions() {
     var optionsHTML = ``
-    console.log(getKeywordsMap())
-
     const options = Object.keys(getKeywordsMap())
     const elOptions = document.querySelector('.filter datalist')
     for (var i = 0; i < options.length; i++) {

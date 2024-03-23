@@ -23,15 +23,15 @@ function renderMeme() {
 function renderImage() {
     const imgId = getEditedMeme().selectedImgId
     const imgIdx = parseInt(imgId.substring(3))
-    const image = new Image
-    image.src = `img/gallery-original/${imgIdx}.jpg`
+    const image = new Image()
+    image.src = getImgs()[imgIdx - 1].url
 
 
 
     gElCanvas = document.querySelector('.meme.' + getEditedMeme().canvasId);
     gCtx = gElCanvas.getContext('2d')
-    const imageHeight = getSizes(imgIdx).h
-    const imageWidth = getSizes(imgIdx).w
+    const imageHeight = getSizes(imgIdx - 1).h
+    const imageWidth = getSizes(imgIdx - 1).w
     var canvasHeight
     var canvasWidth
     if (window.innerWidth <= 350) {
@@ -181,12 +181,12 @@ function renderStickersGallery() {
     stickers.innerHTML = stickersHTML
 }
 
-function moveToMoreStickers(direction){
+function moveToMoreStickers(direction) {
     if (direction === 'left') {
         if (gStickers.idx - 3 < 0) return
         gStickers.idx -= 3
     } else {
-        if (gStickers.idx + 3 > gStickers.stickers.length-1) return
+        if (gStickers.idx + 3 > gStickers.stickers.length - 1) return
         gStickers.idx += 3
     }
     renderStickersGallery()

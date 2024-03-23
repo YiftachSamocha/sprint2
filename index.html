@@ -28,6 +28,15 @@
         <input list="keywords" oninput="filterGallery(this.value)">
         <datalist id="keywords"></datalist>
         <div class="keywords"></div>
+
+    </section>
+    <section class="img-functions">
+        <button onclick="randomImg()">Random</button>
+        <button>
+            <label for="imgInput" onclick="toggleHide()">Upload</label>
+        </button>
+        <input type="file" class="hide" id="imgInput" accept="image/*" onchange="uploadImg(this.value)">
+
     </section>
     <main>
         <section class="gallery"></section>
@@ -64,19 +73,18 @@
                         </div>
                         <button>
                             <label for="strokeColor">
-                                <img src="img/buttons/text stroke.png" alt="Stroke Color Picker">
+                                <img src="img/buttons/text stroke.png">
                             </label>
                         </button>
-                        <!-- Stroke color input -->
+
                         <input type="color" id="strokeColor" oninput="onSetStrokeColor(this.value)">
 
-                        <!-- Button to trigger fill color picker -->
+
                         <button>
                             <label for="fillColor">
-                                <img src="img/buttons/pallate.png" alt="Fill Color Picker">
+                                <img src="img/buttons/pallate.png">
                             </label>
                         </button>
-                        <!-- Fill color input -->
                         <input type="color" id="fillColor" oninput="onSetFillColor(this.value)">
 
 
@@ -88,7 +96,11 @@
                     <div class="stickers"></div>
                     <p onclick="moveToMoreStickers('right')">&#8594;</p>
                 </div>
-                <a href="#" onclick="onDownload(this)">Download</a>
+                <div class="export">
+                    <a href="#" onclick="onDownload(this)">Download</a>
+                    <a onclick="onFacebook()">Facebook</a>
+                </div>
+
             </div>
         </section>
 

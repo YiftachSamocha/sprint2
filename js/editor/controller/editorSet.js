@@ -12,6 +12,7 @@ function onSwitchLine() {
     selectLine(nextLineIdx)
     renderMeme()
     document.querySelector('.text input').value = getEditedMeme().lines[getEditedMeme().selectedLineIdx].txt
+    if (document.querySelector('.text input').value === 'Enter Text!'){} document.querySelector('.text input').value = ''
 }
 
 function onAddLine() {
@@ -73,7 +74,7 @@ function onSetLocation(x, y) {
     renderMeme()
 }
 
-function onAddSticker(sticker){
+function onAddSticker(sticker) {
     addLine()
     selectLine(getLinesLength() - 1)
     onSetText(sticker)
@@ -83,8 +84,7 @@ function onAddSticker(sticker){
 }
 
 function onDownload(elLink) {
-    setIsFramed(false)
-    renderMeme()
+    clearImgToExport()
 
     const dataUrl = gElCanvas.toDataURL()
     elLink.href = dataUrl
@@ -107,4 +107,45 @@ function clearEditor() {
     })
     const fontInput = document.querySelector('select')
     fontInput.options[0].selected = true
+}
+
+function onFacebook() {
+    clearImgToExport()
+    const imgDataUrl = gElCanvas.toDataURL("image/jpeg")
+
+    function onSuccess(uploadedImgUrl) {
+        const url = encodeURIComponent(uploadedImgUrl)
+        window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}&t=${url}`)
+    }
+
+    doUploadImg(imgDataUrl, onSuccess)
+    showSection('gallery')
+}
+
+function doUploadImg(imgDataUrl, onSuccess) {
+    const formData = new FormData()
+    formData.append("img", imgDataUrl)
+
+    const XHR = new XMLHttpRequest()
+    XHR.onreadystatechange = () => {
+        if (XHR.readyState !== XMLHttpRequest.DONE) return
+        if (XHR.status !== 200) return
+        const { responseText: url } = XHR
+        onSuccess(url)
+    }
+    XHR.open("POST", "//ca-upload.com/here/upload.php")
+    XHR.send(formData)
+}
+
+function clearImgToExport() {
+    setIsFramed(false)
+    selectLine(0)
+    while (getEditedMeme().lines.length !== 0 && getEditedMeme().selectedLineIdx !== getLinesLength()) {
+        if (getLine().txt === 'Enter Text!') {
+            deleteLine()
+        } else {
+            selectLine(getEditedMeme().selectedLineIdx + 1)
+        }
+    }
+    renderMeme()
 }
