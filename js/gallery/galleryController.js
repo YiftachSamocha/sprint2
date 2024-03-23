@@ -48,8 +48,8 @@ function renderImgGallery(idx) {
 
     img.onload = function () {
         var size = Math.min(img.width, img.height)
-        canvas.width = gCanvasSize
-        canvas.height = gCanvasSize
+        canvas.width = gGalleryImgSize
+        canvas.height = gGalleryImgSize
         var offsetX = (img.width - size) / 2
         var offsetY = (img.height - size) / 2
 

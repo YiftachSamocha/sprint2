@@ -12,22 +12,23 @@ header {
     justify-content: space-between;
     align-items: center;
 
-    height: 2.8125em;
+    height: 4.375em;
     background-color: var(--header-color);
 
 }
 
 .logo img {
     justify-self: start;
-    height: 1.75em;
+    height: 1.5em;
     width: auto;
+    margin-inline:3em ;
 }
 
 .headers * {
-    font-size: 1.375em;
+    
     color: white;
 
-    padding: 0.4em;
+    padding: 1.5em;
 }
 
 .headers> *:not(:last-child) {
@@ -46,7 +47,7 @@ header {
 .menu-btn{
     display: none;
     color: white;
-    margin-inline: 2em;
+    margin-inline: 1em;
     cursor: pointer;
 }
 
@@ -55,14 +56,14 @@ header {
 }
 
 .filter {
-    height: 6.25em;
+    height: 6.875em;
     display: flex;
     gap: 2em;
     align-items: center;
-    margin: 1em;
+    margin: 2.5em;
 }
 .filter input{
-    width: 15em;
+    width: 16.6875em;
     border: 0;
     border-block-end: 1px solid black;
 }
@@ -107,7 +108,7 @@ header {
 
 
 .credits {
-    height: 12.5em;
+    height: 15.3125em;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -120,7 +121,7 @@ header {
 }
 
 .creatorImg img {
-    height: 10em;
+    height: 13em;
     width: auto;
 }
 
@@ -130,12 +131,18 @@ footer {
     align-items: center;
     flex-direction: column;
 
-    height: 4.5em;
+    height: 13em;
     background-color: var(--header-color);
     color: white;
 
 }
-
+.logo img{
+    height: 3em;
+    width: auto;
+}
+small{
+    font-family: var(--main-font);
+}
 
 
 .hide {

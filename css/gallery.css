@@ -17,13 +17,13 @@
 
 
     background-color: var(--bg-color);
-    min-height: calc(100vh - 7.3125em);
+    min-height: calc(100vh - 17.375em);
     padding-inline: 2.5em;
     padding-block: 2em;
 }
 
 .saved-memes canvas {
-    width: 10em;
+    width: 21.875em;
     height: auto;
 }
 

@@ -7,6 +7,7 @@
     min-height: 15.5em;
     min-width: 350px;
     background-color: var(--bg-color);
+    padding: 2em;
 }
 
 .meme.main {
@@ -19,10 +20,11 @@
 }
 
 .tools {
-    height: 100%;
+    height: 34.375em;
+    width: 22.5em;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     gap: 1em;
     margin-block: 1em;
@@ -33,13 +35,20 @@
     border-color: white;
     border-style: solid;
     padding: 0;
+    width: 27.5em;
+}
+.text div{
+    width: 22.5em;
+    display: flex;
+    justify-content: space-around;
 }
 
 .text,
 .design {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
+    width: 100%;
     align-items: center;
     gap: 0.5em;
 }
@@ -48,8 +57,8 @@
 .editor button,
 .select,
 .stickers-container {
-    height: 3em;
-    width: 3em;
+    height: 4.25em;
+    width: 4.25em;
     background-color: white;
     border-radius: 5px;
     border-color: white;
@@ -69,6 +78,11 @@
     position: relative; 
 }
 
+.location{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
 
 input[type="color"] {
     position: absolute;
@@ -81,7 +95,7 @@ input[type="color"] {
 
 .select {
     width: 60%;
-    height: 100%;
+    height: 4.25em;
 }
 
 select {
@@ -92,6 +106,11 @@ select {
 .text input {
     height: 3em;
 }
+
+.stickers-container{
+    height: 8.75em;
+}
+
 .stickers-container, 
 .stickers{
     display: flex;
@@ -100,13 +119,15 @@ select {
     align-items: center;
 }
 .sticker{
-    font-size: 2em;
+    font-size: 4.625em;
 }
 
 .export{
     width: 100%;
     display: flex;
     justify-content: space-between;
+    
+    
     gap: 0.5em;
 }
 .export a{
@@ -117,6 +138,11 @@ select {
     padding: 0.5em;
     width: 100%;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 1.5625em;
 }
 
 

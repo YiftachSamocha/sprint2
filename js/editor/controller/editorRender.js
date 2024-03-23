@@ -34,13 +34,8 @@ function renderImage() {
     const imageWidth = getSizes(imgIdx - 1).w
     var canvasHeight
     var canvasWidth
-    if (window.innerWidth <= 350) {
-        canvasWidth = gCanvasSize * 2
-        canvasHeight = (canvasWidth * imageHeight) / imageWidth
-    } else {
-        canvasHeight = gCanvasSize
-        canvasWidth = (canvasHeight * imageWidth) / imageHeight
-    }
+    canvasWidth = gEditorImgSize
+    canvasHeight = (canvasWidth * imageHeight) / imageWidth
 
     gElCanvas.width = canvasWidth
     gElCanvas.height = canvasHeight

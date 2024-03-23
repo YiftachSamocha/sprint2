@@ -2,25 +2,35 @@
 const IMAGES_KEY = 'Images'
 const SAVES_MEMES_KEY = 'Saved Memes'
 
-var gCanvasSize = 200
-const desktopSize = 200
-const mobileSize = 100
+const EDITOR_DESKTOP_SIZE = 550
+const EDITOR_MOBILE_SIZE = 340
+const GALLERY_DESKTOP_SIZE = 350
+const GALLERY_MOBILE_SIZE = 165
+
+var gEditorImgSize = 550
+var gGalleryImgSize = 350
+
+
 
 function onInit() {
     determineImgSize()
     insertKeywordsDataOptions()
     showSection('gallery')
+   
 
 }
 
 function determineImgSize() {
     window.addEventListener('resize', function () {
-        if (window.innerWidth <= 350 && gCanvasSize !== mobileSize) {
-            gCanvasSize = mobileSize
+        if (window.innerWidth <= 350 && (gGalleryImgSize !== GALLERY_MOBILE_SIZE || gEditorImgSize !== EDITOR_MOBILE_SIZE)) {
+            gGalleryImgSize = GALLERY_MOBILE_SIZE
+            gEditorImgSize = EDITOR_MOBILE_SIZE
             document.querySelector('.gallery').innerHTML = ''
             renderGallery()
-        } else if (window.innerWidth >= 350 && gCanvasSize !== desktopSize) {
-            gCanvasSize = desktopSize
+            console.log(1)
+        } else if (window.innerWidth >= 350 && (gGalleryImgSize !== GALLERY_DESKTOP_SIZE || gEditorImgSize !== EDITOR_DESKTOP_SIZE)) {
+            gGalleryImgSize = GALLERY_DESKTOP_SIZE
+            gEditorImgSize = EDITOR_DESKTOP_SIZE
             document.querySelector('.gallery').innerHTML = ''
             renderGallery()
         }

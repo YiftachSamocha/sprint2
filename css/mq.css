@@ -3,9 +3,9 @@
     /* GALLERY */
     .headers {
         position: absolute;
-        top: 2.8125em;
+        top: 4.375em;
 
-        height: 10em;
+        height: 14em;
         background-color: var(--header-color);
         min-width: 20em;
 
@@ -14,8 +14,11 @@
         justify-content: space-evenly;
         align-items: start;
 
-        transform: translateY(-12.8315em);
+        transform: translateY(-19.3755em);
 
+    }
+    .logo img{
+        height: 0.5em;
     }
 
 
