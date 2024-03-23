@@ -35,6 +35,7 @@ function filterGallery(input) {
 }
 
 function renderImgGallery(src, idx) {
+function renderImgGallery(src, idx) {
     const gallery = document.querySelector('.gallery')
     var canvas = document.createElement('canvas')
     var ctx = canvas.getContext('2d')
@@ -43,6 +44,7 @@ function renderImgGallery(src, idx) {
     canvas.setAttribute('id', id)
 
 
+    img.src = src
     img.src = src
 
     img.onload = function () {
