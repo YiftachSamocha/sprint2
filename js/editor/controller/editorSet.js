@@ -68,7 +68,6 @@ function onSetAlign(align) {
     renderMeme()
 }
 
-
 function onSetLocation(x, y) {
     setLocation(x, y)
     renderMeme()
@@ -80,7 +79,6 @@ function onAddSticker(sticker) {
     onSetText(sticker)
     renderMeme()
     document.querySelector('.text input').value = sticker
-
 }
 
 function onDownload(elLink) {
@@ -96,7 +94,6 @@ function onDownload(elLink) {
     showSection('saved-memes')
     renderSavedMemes()
     setIsFramed(true)
-
 }
 
 function clearEditor() {

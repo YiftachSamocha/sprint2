@@ -7,28 +7,29 @@ body{
     font-family: var(--main-font);
 }
 
+/* HEADER*/
+
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
 
     height: 4.375em;
-    background-color: var(--header-color);
     width: 100%;
+    background-color: var(--header-color);
 
 }
 
 .logo img {
     justify-self: start;
+
     height: 1.5em;
     width: auto;
     margin-inline:3em ;
 }
 
 .headers * {
-    
-    color: white;
-
+    color: var(--bright-color);
     padding: 1.5em;
 }
 
@@ -47,8 +48,10 @@ header {
 
 .menu-btn{
     display: none;
-    color: white;
+
+    color: var(--bright-color);
     margin-inline: 1em;
+
     cursor: pointer;
 }
 
@@ -56,23 +59,30 @@ header {
     color: black;
 }
 
+/* FILTER*/
+
 .filter {
-    height: 6.875em;
     display: flex;
     gap: 2em;
     align-items: center;
+
+    height: 6.875em;
     margin: 2.5em;
 }
+
 .filter input{
-    width: 16.6875em;
     border: 0;
     border-block-end: 1px solid black;
+
+    width: 16.6875em;
 }
+
 .keywords{
     display: flex;
     justify-content: space-between;
-    width: 100%;
     gap: 0.5em;
+
+    width: 100%;
 }
 
 .filter button{
@@ -86,33 +96,31 @@ header {
     grid-template-rows: 1fr 1fr 1fr;
 }
 
+/* IMAGE FUNCTIONS*/
 .img-functions{
     display: flex;
     justify-content: space-between;
+
     width: 100%;
 }
 
 .img-functions button{
     border: 0;
-    background-color: white;
+    background-color: var(--bright-color);
     font-family: var(--main-font);
     margin-inline: 3em;
     margin-block: 1em;
     cursor: pointer;
 }
 
-
-
-
-
-
-
+/*CREDITS*/
 
 .credits {
-    height: 15.3125em;
     display: flex;
     justify-content: space-around;
     align-items: center;
+
+    height: 15.3125em;
 }
 
 .creatorInfo {
@@ -126,6 +134,8 @@ header {
     width: auto;
 }
 
+/* FOOTER*/
+
 footer {
     display: flex;
     justify-content: space-evenly;
@@ -134,7 +144,7 @@ footer {
 
     height: 13em;
     background-color: var(--header-color);
-    color: white;
+    color: var(--bright-color);
 
 }
 .logo img{

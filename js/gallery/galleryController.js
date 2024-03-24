@@ -1,6 +1,5 @@
 'use strict'
 
-
 function renderGallery() {
     document.querySelector('.gallery').innerHTML = ''
     for (var i = 0; i < getImgs().length; i++) {
@@ -8,31 +7,6 @@ function renderGallery() {
     }
     renderKeywords()
 }
-
-function filterGallery(input) {
-    document.querySelector('.gallery').innerHTML = ''
-    const imgs = getImgs()
-    for (var i = 0; i < imgs.length; i++) {
-        for (var j = 0; j < imgs[i].keywords.length; j++) {
-            if (imgs[i].keywords[j].includes(input)) {
-                renderImgGallery(i)
-                break
-
-            }
-        }
-    }
-
-    const datalist = document.querySelectorAll('.filter option')
-    for (var i = 0; i < datalist.length; i++) {
-        if (input === datalist[i].value) {
-            increaseKeyword(input)
-            renderKeywords()
-            return
-        }
-    }
-
-}
-
 
 function renderImgGallery(idx) {
     const gallery = document.querySelector('.gallery')
@@ -62,23 +36,46 @@ function renderImgGallery(idx) {
     gallery.appendChild(canvas)
 }
 
+function filterGallery(input) {
+    document.querySelector('.gallery').innerHTML = ''
+    const imgs = getImgs()
+    for (var i = 0; i < imgs.length; i++) {
+        for (var j = 0; j < imgs[i].keywords.length; j++) {
+            if (imgs[i].keywords[j].includes(input)) {
+                renderImgGallery(i)
+                break
+
+            }
+        }
+    }
+
+    const datalist = document.querySelectorAll('.filter option')
+    for (var i = 0; i < datalist.length; i++) {
+        if (input === datalist[i].value) {
+            increaseKeyword(input)
+            renderKeywords()
+            return
+        }
+    }
+
+}
+
 function renderKeywords() {
     const elKeywords = document.querySelector('.keywords')
     var keywordsHTML = ``
     const keywordsSizes = Object.values(getKeywordsMap())
     const keywordsWords = Object.keys(getKeywordsMap())
-
-
     var keywordsAmount
+
     if (document.body.classList.contains('keywords-all-opened')) keywordsAmount = keywordsWords.length
     else keywordsAmount = 5
 
     for (var i = 0; i < keywordsAmount; i++) {
         keywordsHTML += `<p style="font-size: ${keywordsSizes[i] * 0.5}em;" onclick="filterGallery('${keywordsWords[i]}')">${keywordsWords[i]}</p>`
     }
+
     if (document.body.classList.contains('keywords-all-opened')) {
         keywordsHTML += '<button onclick="toggleKeywords()">Close</button>'
-
     } else {
         keywordsHTML += '<button onclick="toggleKeywords()">more...</button>'
     }
@@ -92,7 +89,6 @@ function toggleKeywords() {
     document.querySelector('.filter').classList.toggle('opened-keywords')
     renderKeywords()
 }
-
 
 function onImgSelect(imageId) {
     clearEditor()
@@ -132,10 +128,7 @@ function uploadImg() {
         }
 
     }
-
     reader.readAsDataURL(file)
-    
-
 }
 
 function getImgSizes(src) {

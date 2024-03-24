@@ -14,42 +14,50 @@
     border: 2px solid black;
 }
 
-.editor .tools img {
-    height: 80%;
-    width: auto;
-}
-
 .tools {
-    height: 34.375em;
-    width: 22.5em;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     gap: 1em;
+
+    height: 34.375em;
+    width: 22.5em;
     margin-block: 1em;
 }
 
-.text input {
-    border-radius: 5px;
-    border-color: white;
-    border-style: solid;
-    padding: 0;
-    width: 27.5em;
+.editor .tools img {
+    height: 80%;
+    width: auto;
 }
-.text div{
-    width: 22.5em;
+
+.text input {
+    width: 27.5em;
+
+    border: 5px var(--bright-color) solid;
+    padding: 0;
+}
+
+.text div {
     display: flex;
     justify-content: space-around;
+
+    width: 22.5em;
+}
+
+.text,
+.design,
+.decorate {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
 }
 
 .text,
 .design {
-    display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    width: 100%;
-    align-items: center;
     gap: 0.5em;
 }
 
@@ -59,38 +67,32 @@
 .stickers-container {
     height: 4.25em;
     width: 4.25em;
-    background-color: white;
-    border-radius: 5px;
-    border-color: white;
-    border-style: solid;
-    padding: 0;
+    background-color: var(--bright-color);
     cursor: pointer;
-}
 
-.decorate {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-}
+    border: 5px var(--bright-color) solid;
+    border-radius: 5px;
+    padding: 0;
 
+}
 
 .decorate button {
-    position: relative; 
+    position: relative;
 }
 
-.location{
+.location {
     display: flex;
-    width: 100%;
     justify-content: space-between;
+
+    width: 100%;
 }
 
 input[type="color"] {
     position: absolute;
-    top: 2em; 
-    right: 10.5em; 
+    top: 2em;
+    right: 10.5em;
     visibility: hidden;
 }
-
 
 
 .select {
@@ -107,42 +109,40 @@ select {
     height: 3em;
 }
 
-.stickers-container{
+.stickers-container {
     height: 8.75em;
 }
 
-.stickers-container, 
-.stickers{
+.stickers-container,
+.stickers,
+.export {
     display: flex;
-    width: 100%;
     justify-content: space-between;
     align-items: center;
+
+    width: 100%;
 }
-.sticker{
+
+.sticker {
     font-size: 4.625em;
 }
 
-.export{
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    
-    
+.export {
     gap: 0.5em;
 }
-.export a{
-    background-color: var(--header-color);
-    border-radius: 5px;
-    text-decoration: none;
-    color: white;
-    padding: 0.5em;
-    width: 100%;
-    cursor: pointer;
+
+.export a {
     display: flex;
     justify-content: center;
     align-items: center;
 
+    background-color: var(--header-color);
+    text-decoration: none;
+    color: var(--bright-color);
+    width: 100%;
+    cursor: pointer;
     font-size: 1.5625em;
+
+    padding: 0.5em;
+    border-radius: 5px;
 }
-
-

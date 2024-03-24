@@ -110,7 +110,6 @@ function setKeywordsMap() {
             if (gKeywordMap.hasOwnProperty(gImgs[i].keywords[j])) continue
             gKeywordMap[gImgs[i].keywords[j]] = 1
         }
-
     }
 }
 

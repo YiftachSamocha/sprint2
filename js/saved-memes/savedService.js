@@ -11,12 +11,12 @@ function addSavedMeme(meme) {
 
 function getMemeById(memeId) {
     for (var i = 0; i < gSaved.length; i++) {
-        if (gSaved[i].id === memeId) return gSaved[i]
+        if (gSaved[i].canvasId === memeId) return gSaved[i]
     }
 }
 
 function removeMeme(memeId) {
     for (var i = 0; i < gSaved.length; i++) {
-        if (gSaved[i].id === memeId) gSaved.splice(i, 1)
+        if (gSaved[i].canvasId === memeId) gSaved.splice(i, 1)
     }
 }

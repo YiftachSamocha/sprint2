@@ -13,7 +13,7 @@ var gGalleryImgSize = 350
 
 
 function onInit() {
-    determineImgSize()
+    //determineImgSize()
     insertKeywordsDataOptions()
     showSection('gallery')
    
@@ -35,6 +35,13 @@ function determineImgSize() {
             renderGallery()
         }
     })
+}
+
+function saveToStorage(title, value) {
+    localStorage.setItem(title, JSON.stringify(value))
+}
+function getFromStorage(title) {
+    return JSON.parse(localStorage.getItem(title))
 }
 
 
@@ -70,6 +77,7 @@ function showSection(sectionName) {
     if (sectionName === 'saved-memes') {
         renderSavedMemes()
     }
+
     if (sectionName === 'gallery') {
         document.querySelector('.gallery-header').classList.add('current')
         document.querySelector('.saved-memes-header').classList.remove('current')
@@ -80,14 +88,21 @@ function showSection(sectionName) {
         document.querySelector('.gallery-header').classList.remove('current')
         document.querySelector('.saved-memes-header').classList.remove('current')
     }
-
 }
 
-function saveToStorage(title, value) {
-    localStorage.setItem(title, JSON.stringify(value))
+function toggleMenu() {
+    document.body.classList.toggle('menu-open')
+    var button = document.querySelector('.menu-btn')
+    if (document.body.classList.contains('menu-open')) {
+        button.innerHTML = 'X'
+    }
+    else {
+        button.innerHTML = '☰'
+    }
 }
-function getFromStorage(title) {
-    return JSON.parse(localStorage.getItem(title))
+
+function toggleHide() {
+    document.getElementById('imgInput').classList.toggle('hide')
 }
 
 function createId() {
@@ -98,21 +113,4 @@ function createId() {
         id += characters.charAt(randomIndex)
     }
     return id
-}
-
-function toggleMenu() {
-    document.body.classList.toggle('menu-open')
-
-    var button = document.querySelector('.menu-btn')
-    if (document.body.classList.contains('menu-open')) {
-        button.innerHTML = 'X'
-    }
-    else {
-        button.innerHTML = '☰'
-
-    }
-}
-
-function toggleHide() {
-    document.getElementById('imgInput').classList.toggle('hide')
 }

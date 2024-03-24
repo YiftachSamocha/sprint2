@@ -8,7 +8,6 @@ function renderMeme() {
     const currLineIdx = getEditedMeme().selectedLineIdx
     renderImage()
     removeMovement()
-
     for (var i = 0; i < getLinesLength(); i++) {
         selectLine(i)
         renderLine()
@@ -16,34 +15,27 @@ function renderMeme() {
     if (getEditedMeme().isFramed) renderFrame(currLineIdx)
     addMovement()
     selectLine(currLineIdx)
-
-
 }
 
 function renderImage() {
     const imgId = getEditedMeme().selectedImgId
     const imgIdx = parseInt(imgId.substring(3))
+
     const image = new Image()
     image.src = getImgs()[imgIdx - 1].url
-
-
-
-    gElCanvas = document.querySelector('.meme.' + getEditedMeme().canvasId);
+    gElCanvas = document.querySelector('.meme.' + getEditedMeme().canvasId)
     gCtx = gElCanvas.getContext('2d')
+
     const imageHeight = getSizes(imgIdx - 1).h
     const imageWidth = getSizes(imgIdx - 1).w
     var canvasHeight
     var canvasWidth
     canvasWidth = gEditorImgSize
     canvasHeight = (canvasWidth * imageHeight) / imageWidth
-
     gElCanvas.width = canvasWidth
     gElCanvas.height = canvasHeight
 
-
-
     gCtx.drawImage(image, 0, 0, canvasWidth, canvasHeight)
-
 }
 
 function renderLine() {
@@ -91,13 +83,13 @@ function makeClickableFrame(event) {
         const endX = frame.x + frame.w
         const startY = frame.y
         const endY = frame.y + frame.h
+
         if (event.offsetX >= startX && event.offsetX <= endX && event.offsetY >= startY && event.offsetY <= endY) {
             selectLine(i)
             renderMeme()
             document.querySelector('.text input').value = value
         }
     }
-
 }
 
 
@@ -137,16 +129,6 @@ function renderFrame(lineIdx) {
     gCtx.strokeRect(frame.x, frame.y, frame.w, frame.h)
 }
 
-function drag(event) {
-    if (!getLine().drag.isDragged) return
-    const x = event.offsetX - getLine().drag.loc.w
-    const y = event.offsetY + getLine().drag.loc.h
-    setLocation(x, y)
-    setAlign('')
-    renderMeme()
-}
-
-
 function startDrag(event) {
     const line = getLine()
     const frame = getFramePoitions(line)
@@ -160,10 +142,31 @@ function startDrag(event) {
     }
 }
 
-
+function drag(event) {
+    if (!getLine().drag.isDragged) return
+    const x = event.offsetX - getLine().drag.loc.w
+    const y = event.offsetY + getLine().drag.loc.h
+    setLocation(x, y)
+    setAlign('')
+    renderMeme()
+}
 
 function endDrag() {
     setIsDragged(false)
+}
+
+function addMovement() {
+    gElCanvas.addEventListener('mousedown', startDrag)
+    gElCanvas.addEventListener('mousemove', drag)
+    gElCanvas.addEventListener('mouseup', endDrag)
+    gElCanvas.addEventListener('click', makeClickableFrame)
+}
+
+function removeMovement() {
+    gElCanvas.removeEventListener('mousedown', startDrag)
+    gElCanvas.removeEventListener('mousemove', drag)
+    gElCanvas.removeEventListener('mouseup', endDrag)
+    gElCanvas.removeEventListener('click', makeClickableFrame)
 }
 
 function renderStickersGallery() {
@@ -185,25 +188,6 @@ function moveToMoreStickers(direction) {
         gStickers.idx += 3
     }
     renderStickersGallery()
-}
-
-
-
-function addMovement() {
-    gElCanvas.addEventListener('mousedown', startDrag)
-    gElCanvas.addEventListener('mousemove', drag)
-    gElCanvas.addEventListener('mouseup', endDrag)
-    gElCanvas.addEventListener('click', makeClickableFrame)
-
-
-}
-
-function removeMovement() {
-    gElCanvas.removeEventListener('mousedown', startDrag)
-    gElCanvas.removeEventListener('mousemove', drag)
-    gElCanvas.removeEventListener('mouseup', endDrag)
-    gElCanvas.removeEventListener('click', makeClickableFrame)
-
 }
 
 

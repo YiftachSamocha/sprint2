@@ -27,9 +27,13 @@ function onMemeSelect() {
 
 function editSavedMeme(memeId) {
     const meme = getMemeById(memeId)
-    removeMeme(memeId)
     setEditedMeme(meme)
-    setEditedMemeId('main')
+    setCanvasId('main')
+    selectLine(0)
+    setIsFramed(true)
     renderMeme()
+    
+    renderStickersGallery()
+    removeMeme(memeId)
     showSection('editor')
 }

@@ -1,4 +1,4 @@
-.gallery {
+.gallery, .saved-memes {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1.5em;
@@ -11,15 +11,7 @@
 }
 
 .saved-memes {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5em;
-
-
-    background-color: var(--bg-color);
     min-height: calc(100vh - 17.375em);
-    padding-inline: 2.5em;
-    padding-block: 2em;
 }
 
 .saved-memes canvas {
