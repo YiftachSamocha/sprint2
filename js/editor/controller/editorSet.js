@@ -12,7 +12,7 @@ function onSwitchLine() {
     selectLine(nextLineIdx)
     renderMeme()
     document.querySelector('.text input').value = getEditedMeme().lines[getEditedMeme().selectedLineIdx].txt
-    if (document.querySelector('.text input').value === 'Enter Text!'){} document.querySelector('.text input').value = ''
+    if (document.querySelector('.text input').value === 'Enter Text!') document.querySelector('.text input').value = ''
 }
 
 function onAddLine() {

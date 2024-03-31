@@ -10,6 +10,11 @@
 
 }
 
+.gallery canvas{
+    height: 21.875em;
+    width: 21.875em;
+}
+
 .saved-memes {
     min-height: calc(100vh - 17.375em);
 }

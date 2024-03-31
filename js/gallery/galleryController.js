@@ -131,12 +131,6 @@ function uploadImg() {
     reader.readAsDataURL(file)
 }
 
-function getImgSizes(src) {
-    const img = new Image()
-    img.src = src
-    const dimentions = { w: img.naturalWidth, h: img.naturalHeight }
-    return dimentions
-}
 
 function insertKeywordsDataOptions() {
     var optionsHTML = ``

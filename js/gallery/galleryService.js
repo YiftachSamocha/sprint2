@@ -18,8 +18,8 @@ function createImgs() {
             id: 'id-' + i,
             url: `img/gallery-original/${i}.jpg`,
             keywords: insertKeyWords(i),
-            width: getImgSizes(`img/gallery-original/${i}.jpg`,).w,
-            height: getImgSizes(`img/gallery-original/${i}.jpg`,).h,
+            width: '',
+            height: '',
 
         }
         imgs.push(img)
@@ -117,10 +117,7 @@ function getKeywordsMap() {
     if (!gKeywordMap) setKeywordsMap()
     return gKeywordMap
 }
-function addSizes(w, h, imgIdx) {
-    gImgs[imgIdx].width = w
-    gImgs[imgIdx].height = h
-}
+
 
 function getSizes(imgIdx) {
     const w = gImgs[imgIdx].width

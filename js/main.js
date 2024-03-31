@@ -16,7 +16,9 @@ function onInit() {
     //determineImgSize()
     insertKeywordsDataOptions()
     showSection('gallery')
-   
+    determineImgDimensions()
+    
+
 
 }
 
@@ -36,6 +38,24 @@ function determineImgSize() {
         }
     })
 }
+
+function determineImgDimensions() {
+    const imgs = getImgs()
+    
+    for (let i = 0; i < imgs.length; i++) {
+        const img = new Image()
+        
+        img.onload = function() {
+            const w = this.naturalWidth
+            const h = this.naturalHeight
+            setImgSize(w, h, i)
+            document.body.removeChild(this)
+        }
+        img.src = imgs[i].url
+        document.body.appendChild(img)
+    }
+}
+
 
 function saveToStorage(title, value) {
     localStorage.setItem(title, JSON.stringify(value))
